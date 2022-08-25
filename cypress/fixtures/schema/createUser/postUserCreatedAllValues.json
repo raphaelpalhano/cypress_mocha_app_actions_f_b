@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "required": [
+        "status",
+        "data"
+    ],
+    "properties": {
+        "status": {
+            "type": "integer"
+        },
+        "data": {
+            "type": "object",
+            "required": [
+                "@odata.context",
+                "id",
+                "businessPhones",
+                "displayName",
+                "givenName",
+                "jobTitle",
+                "mail",
+                "mobilePhone",
+                "officeLocation",
+                "preferredLanguage",
+                "surname",
+                "userPrincipalName"
+            ],
+            "properties": {
+                "@odata.context": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "businessPhones": {
+                    "type": "array"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "givenName": {
+                    "type": "string"
+                },
+                "jobTitle": {
+                    "type": "string"
+                },
+                "mail": {
+                    "type": "null"
+                },
+                "mobilePhone": {
+                    "type": "string"
+                },
+                "officeLocation": {
+                    "type": "string"
+                },
+                "preferredLanguage": {
+                    "type": "string"
+                },
+                "surname": {
+                    "type": "string"
+                },
+                "userPrincipalName": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "required": [
+        "status",
+        "data"
+    ],
+    "properties": {
+        "status": {
+            "type": "integer"
+        },
+        "data": {
+            "type": "object",
+            "required": [
+                "@odata.context",
+                "value"
+            ],
+            "properties": {
+                "@odata.context": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "array"
+                }
+            }
+        }
+    }
+}

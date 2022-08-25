@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  e2e:
+    image: "registry.gitlab.com/igua_mule/igua-app/igua-login-unificado-ad/igua_authentication/cypress:${BUILD_NUMBER}"
+    build: ./
+    container_name: cypress
+    depends_on:
+      - web
+    environment:
+      - CYPRESS_baseUrl=http://localhost:88
+    command: >
+        bash -c "npm run cy:clear && npm run cy:run:developed"
+    network_mode: "host"
+    volumes:
+      - ./cypress:/cy/cypress
+      - ./cypress.config.js:/cy/cypress.config.js
+      - ./cypress/videos/:/cy/cypress/videos/
