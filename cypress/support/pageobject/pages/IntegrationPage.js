@@ -40,4 +40,18 @@ export class IntegrationPage {
   static cancelModal() {
     generalLocator.DATATEST('alert-modal-cancel-btn').click();
   }
+
+  static removeAllIntegration() {
+    this.cancelModal();
+    cy.get('tbody').each(($row) => {
+      if ($row.find('tr').length >= 1) {
+        cy.wrap($row.find('tr')).each((td) => {
+          cy.wrap(td.find('td > div')).within(() => {
+            cy.get('button').click();
+          });
+          cy.get('button[data-testid="alert-modal-confirm-btn"]').click();
+        });
+      }
+    });
+  }
 }

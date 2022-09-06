@@ -1,4 +1,5 @@
 import generalLocator from '../locators/general.locator';
+import breakPoint from '../../../fixtures/static/breakPointText.json';
 
 export class LateralMenu {
   static validNav() {

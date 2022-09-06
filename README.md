@@ -1,9 +1,5 @@
 # Estrutura do framework
 
-<p >
-    <img src="../flows/flow_frontend.drawio.png" alt="imagem nao existe">
- </p>
-
 
 ## 1 Pageobject
 

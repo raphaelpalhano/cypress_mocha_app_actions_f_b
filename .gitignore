@@ -1,3 +1,4 @@
+
 # compiled output
 /dist
 /node_modules
@@ -47,6 +48,7 @@ reports/assets
 reports/*.html
 reports/html/index.html
 reports/html/features/*.html
+reports/assets
 
 cypress/screenshots
 

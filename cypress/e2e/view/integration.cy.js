@@ -44,4 +44,8 @@ describe('Painel de Integraçoes', () => {
     IntegrationPage.submitIntegration();
     IntegrationPage.successMessage();
   });
+
+  after('Limpando as integrações', () => {
+    IntegrationPage.removeAllIntegration();
+  });
 });
