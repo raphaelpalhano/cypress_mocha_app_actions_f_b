@@ -1,0 +1,27 @@
+{
+  "manager": {
+    "operations": "Operações",
+    "manager": "Gestão",
+    "entity": "Entidades",
+    "user": "Usuários",
+    "fees": "Subir taxas",
+    "intermediation": "Insumos e Leilão",
+    "intermediation_fees": "Cadastrar notas e rebate",
+    "config": "Configurações",
+    "integration": "Integrações",
+    "registry": "Cadastrar"
+  },
+
+  "investor": {
+    "panel": "Painel Inicial",
+    "manager": "Gestão",
+    "fees": "Subir taxas",
+    "operations": "Resumo das Operações",
+    "intermediation": "Insumos e Leilão"
+  },
+
+  "provider": {
+    "manager": "Gestão",
+    "operations": "Resumo das Operações"
+  }
+}

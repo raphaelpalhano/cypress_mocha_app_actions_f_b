@@ -1,17 +1,26 @@
 {
   "compilerOptions": {
-    "lib": ["es2015", "dom"],
-    "allowJs": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "target": "ESNext",
     "noEmit": true,
+    "strict": false,
+    "lib": ["es2015", "DOM"],
     "types": [
-      "cypress", 
+      "cypress",
+      "cypress-real-events",
+      "cy-verify-downloads",
+      "cypress-file-upload",
+      "node",
       "cypress-xpath",
       "cypress-grep",
-      "cypress-file-upload"
+      "@testing-library/cypress"
     ]
   },
   "include": [
     "./node_modules/cypress",
-    "cypress/**/*.js"
+    "./**/*.ts",
+    "cypress/support/e2e.ts",
+    "./cypress/support/commands.js"
   ]
 }

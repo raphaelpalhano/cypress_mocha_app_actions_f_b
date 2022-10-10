@@ -1,0 +1,14 @@
+{
+  "welcomeMessage": "Olá, boas-vindas!",
+  "managerHome": "Painel inicial",
+  "investorHome": "Home Investidor",
+  "providerHome": "Home Fornecedor",
+  "navPrincipal": "Página inicial",
+  "welcomeFirstAccess": "Boas-vindas!",
+  "forgotPassword": "Recuperar senha",
+  "integrationsPanel": "Painel de integrações",
+  "integrationForm": "Cadastrar nova integração",
+  "uploadfees": "Cadastro de taxas e limites",
+  "intermediation": "Cadastrar notas e rebate ",
+  "fillRegistry": "Preencher cadastro"
+}

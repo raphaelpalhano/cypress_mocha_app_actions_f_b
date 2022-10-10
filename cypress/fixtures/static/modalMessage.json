@@ -1,0 +1,6 @@
+{
+  "success": "Tudo pronto!",
+  "companyRegistred": "Cadastro concluído!",
+  "waitUpload": "Importando arquivo de taxas",
+  "feesError": "Falha ao importar arquivo"
+}

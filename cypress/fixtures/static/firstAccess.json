@@ -1,0 +1,29 @@
+{
+  "valid": {
+    "email": "automation@stellantis.com",
+    "otp": "Lk24@b",
+    "newpass": "Kjh20@89",
+    "confirmpass": "Kjh20@89"
+  },
+
+  "inv_email": {
+    "email": "www.example.com",
+    "otp": "Lk24@b",
+    "newpass": "Kjh20@89",
+    "confirmpass": "Kjh20@89"
+  },
+
+  "inv_pass": {
+    "email": "automation@stellantis.com",
+    "otp": "Lk24@b",
+    "newpass": "k20890000",
+    "confirmpass": "k20890000"
+  },
+
+  "diff_pass": {
+    "email": "automation@stellantis.com",
+    "otp": "Lk24@b",
+    "newpass": "Kjh20@89",
+    "confirmpass": "Kjh20@80"
+  }
+}

@@ -9,7 +9,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-.env
+
 # OS
 .DS_Store
 
@@ -35,7 +35,7 @@ gitlab.txt
 !.vscode/launch.json
 !.vscode/extensions.json
 node_modules
-.env
+
 cypress.env.json
 
 #reports

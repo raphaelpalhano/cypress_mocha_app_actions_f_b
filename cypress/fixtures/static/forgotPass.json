@@ -1,0 +1,9 @@
+{
+  "invalid": {
+    "email": "www.example.com"
+  },
+
+  "valid": {
+    "email": "automation@external.stellantis.com"
+  }
+}

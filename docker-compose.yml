@@ -6,8 +6,8 @@ services:
     container_name: cypress
     depends_on:
       - web
-    environment:
-      - CYPRESS_baseUrl=http://localhost:88
+    # environment:
+    # - CYPRESS_baseUrl=http://localhost:88
     command: >
         bash -c "npm run cy:clear && npm run cy:run:developed"
     network_mode: "host"
