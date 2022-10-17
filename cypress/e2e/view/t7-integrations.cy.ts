@@ -8,14 +8,15 @@ import * as submitButton from '../../fixtures/static/submitButton.json';
 describe('Go to Integrations', () => {
   beforeEach(() => {
     cy.openBrowser();
+    cy.intercept('POST', '/proxy/auth/api/v1/auth/token/decode').as('auth');
     cy.validRoute(Cypress.env('ROUTERS').login);
     cy.login(Cypress.env('USERS').USER_MANAGER);
-    cy.menuItem('4').realHover().should('have.text', menuItem.manager.config).click();
+    cy.waitAuth();
+    cy.menuItem('Configurações').realHover().should('have.text', menuItem.manager.config).click();
     cy.href(Cypress.env('ROUTERS').integration).should('have.text', menuItem.manager.integration).click();
     cy.validRoute(Cypress.env('ROUTERS').integration);
     cy.dataId('page-title').should('have.text', breakPoint.integrationsPanel).realMouseUp();
   });
-
 
   it('Create new integration type URL', () => {
     cy.href(Cypress.env('ROUTERS').integration_create)
@@ -73,7 +74,7 @@ describe('Go to Integrations', () => {
     cy.contains(integration.date.type).click();
     cy.get('input[name*=".value"]').type(integration.date.key);
     cy.elementType('submit').should('be.enabled').click();
-    cy.modal(message.success);   
+    cy.modal(message.success);
     cy.dataId('page-title').should('have.text', breakPoint.integrationsPanel);
   });
 
@@ -94,5 +95,4 @@ describe('Go to Integrations', () => {
   afterEach('Clean all integrations', () => {
     cy.removeAllIntegration();
   });
-
 });

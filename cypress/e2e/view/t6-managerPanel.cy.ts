@@ -1,10 +1,12 @@
 import * as operations from '../../fixtures/static/operationsValue.json';
 
-describe('Go to manager panel', () => {
+describe.skip('Go to manager panel', () => {
   beforeEach(() => {
     cy.openBrowser();
+    cy.intercept('POST', '/proxy/auth/api/v1/auth/token/decode').as('auth');
     cy.validRoute(Cypress.env('ROUTERS').login);
     cy.login(Cypress.env('USERS').USER_MANAGER);
+    cy.waitAuth();
   });
 
   it('Summary of operations', () => {

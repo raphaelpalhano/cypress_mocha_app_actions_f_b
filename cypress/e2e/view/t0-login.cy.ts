@@ -6,26 +6,25 @@ describe('Go login', () => {
     cy.validRoute(Cypress.env('ROUTERS').login);
   });
 
-  afterEach(() => {
-    cy.screenshot();
-  });
-
   it('Login in with Manager', () => {
     cy.login(Cypress.env('USERS').USER_MANAGER);
+    cy.waitAuth();
     cy.dataId('page-title').should('have.text', breakPoint.managerHome);
   });
 
   it('Login in with Investor', () => {
     cy.login(Cypress.env('USERS').USER_INVESTOR);
+    cy.waitAuth();
     cy.contains(breakPoint.investorHome);
   });
 
   it('Login in with Provider', () => {
     cy.login(Cypress.env('USERS').USER_PROVIDER);
+    cy.waitAuth();
     cy.contains(breakPoint.providerHome);
   });
 
-  it.skip('Invalid login', () => {
+  it('Invalid login', () => {
     cy.login(Cypress.env('USERS').USER_INVALID);
     cy.alertMessage();
   });

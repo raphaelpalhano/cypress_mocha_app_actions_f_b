@@ -5,9 +5,12 @@ import * as message from '../../fixtures/static/modalMessage.json';
 describe('Go upload fees', () => {
   beforeEach(() => {
     cy.openBrowser();
+    cy.intercept('POST', '/proxy/auth/api/v1/auth/token/decode').as('auth');
     cy.validRoute(Cypress.env('ROUTERS').login);
     cy.login(Cypress.env('USERS').USER_INVESTOR);
-    cy.menuItem('2').realHover().should('have.text', menuItem.manager.manager).click();
+    cy.waitAuth();
+
+    cy.menuItem('Gestão').realHover().should('have.text', menuItem.manager.manager).click();
     cy.href(Cypress.env('ROUTERS').fees).should('have.text', menuItem.manager.fees).click();
     cy.validRoute(Cypress.env('ROUTERS').fees);
     cy.dataId('page-title').should('have.text', breakPoint.uploadfees).realMouseUp();

@@ -11,6 +11,8 @@
         "airbnb-base",
         "plugin:cypress/recommended"
     ],
+
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
       "ecmaFeatures": {
         "jsx": true
@@ -25,7 +27,7 @@
         "cypress/no-assigning-return-values": "error",
         "cypress/no-unnecessary-waiting": "error",
         "cypress/assertion-before-screenshot": "warn",
-        "cypress/no-force": "warn",
+        "cypress/no-force": "off",
         "no-unused-vars": "off",
         "cypress/no-async-tests": "error",
         "cypress/no-pause": "error",

@@ -17,37 +17,35 @@
 import 'cypress-failed-log';
 import 'cypress-mochawesome-reporter/register';
 import 'cypress-xpath';
-require('cypress-grep')()
 import 'cypress-file-upload';
 import 'cypress-real-events/support';
-require('cy-verify-downloads').addCustomCommand();
-
 
 // backend
 import './commands/helpers/schema.validation';
 import './commands/helpers/request.service';
-import './commands/services/rest.service'
-import './commands/services/user/researchUsers.service'
+import './commands/services/rest.service';
+import './commands/services/user/researchUsers.service';
 
 // front
-import './commands/screens/enterprise'
-import './commands/screens/general'
-import './commands/screens/home'
-import './commands/screens/login'
-import './commands/screens/operationsSummary'
-import './commands/screens/integrations'
-
-
+import './commands/screens/enterprise';
+import './commands/screens/general';
+import './commands/screens/home';
+import './commands/screens/login';
+import './commands/screens/operationsSummary';
+import './commands/screens/integrations';
 
 // service-commom
 import './commands/helpers/baseUrl.control';
 
 // general
 import './commands/helpers/router.control';
+import './commands/helpers/wait.control';
 
+require('cypress-grep')();
+require('cy-verify-downloads').addCustomCommand();
 
 Cypress.Server.defaults({
   delay: 500,
   force404: false,
-  
+
 });

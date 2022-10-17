@@ -15,7 +15,7 @@
   "investor": {
     "panel": "Painel Inicial",
     "manager": "Gestão",
-    "fees": "Subir taxas",
+    "fees": "Cadastrar taxas e limites",
     "operations": "Resumo das Operações",
     "intermediation": "Insumos e Leilão"
   },

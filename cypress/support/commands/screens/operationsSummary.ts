@@ -1,13 +1,11 @@
 import '@testing-library/cypress/add-commands';
+
 const datelocal = Date.now();
 const today = new Date(datelocal);
 
-Cypress.Commands.add('table', (value) => {
-  return cy.get(`tr :nth-child(${value}) .flex .text-sm`);
-});
+Cypress.Commands.add('table', (value) => cy.get(`tr :nth-child(${value}) .flex .text-sm`));
 
 Cypress.Commands.add('validTime', () => {
-  cy.wait(10000);
   cy.get('header div div span')
     .invoke('text')
     .then((time) => {

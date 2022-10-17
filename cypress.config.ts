@@ -1,8 +1,8 @@
 import { defineConfig } from 'cypress';
 
 import * as dotenv from 'dotenv';
-const { verifyDownloadTasks } = require('cy-verify-downloads');
 
+const { verifyDownloadTasks } = require('cy-verify-downloads');
 
 dotenv.config({
   path: process.env.NODE_ENV_TEST === 'develop' ? '.env.dev' : '.env',
@@ -35,7 +35,6 @@ module.exports = defineConfig({
       require('cypress-failed-log/on')(on);
       require('cypress-mochawesome-reporter/plugin')(on);
       on('task', verifyDownloadTasks);
-
     },
   },
   env: {
@@ -45,10 +44,10 @@ module.exports = defineConfig({
       USER_INVESTOR: 'investidor',
       USER_PROVIDER: 'fornecedor',
       USER_INVALID: 'automation',
-      PASSWORD: process.env.PASSWORD
+      PASSWORD: process.env.PASSWORD,
     },
 
-    ROUTERS:{
+    ROUTERS: {
       home: 'dashboard',
       login: 'login',
       forgotPass: 'login/forgot-password',
@@ -56,10 +55,10 @@ module.exports = defineConfig({
       integration: 'integrations',
       intermadiation_fees: 'register-invoice-and-intermediation',
       integration_create: 'integrations/create',
-      fees: 'upload-fees',
+      fees: 'upload-fees-and-register-limits',
       operations_summary: 'operations-summary',
       register: 'register-entity',
-      registry_entity: 'register-entity/enterprise'
+      registry_entity: 'register-entity/enterprise',
     },
 
     TAGS: 'not @ignore',

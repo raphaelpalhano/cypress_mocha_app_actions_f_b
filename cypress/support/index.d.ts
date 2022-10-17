@@ -5,10 +5,9 @@ declare namespace Cypress {
        * @Description coloque o nome da tag que representa o ambiente que você estiver trabalhando
        * @param: (TagName)
        * @example: cy.changeBaseUrlIfNotEq('ServRest')
-       * @Effect vai mudar a baseUrl para o outro ambiente conforme o que estiver no env do arquivo cypress.config.js 
+       * @Effect vai mudar a baseUrl para o outro ambiente conforme o que estiver no env do arquivo cypress.config.js
        */
         changeBaseUrl(envName: string): Chainable<any>
-
 
         /* -------------------------------------------------------BACK-END --------------------------------------------------------------------*/
 
@@ -19,7 +18,7 @@ declare namespace Cypress {
        * @param: (method,url)
        */
        requestWithoutBody(method: string, url: string): Chainable<any>
-  
+
        /**
        * @CommandGeneric
        * @requestWithBody
@@ -28,7 +27,6 @@ declare namespace Cypress {
        * @example: cy.requestWithBody('POST', 'admin/user', body.json)
        */
        requestWithBody(method: string, url: string, body: object): Chainable<any>
-
 
        /**
        * @CommandGeneric
@@ -39,32 +37,28 @@ declare namespace Cypress {
        */
        requestWithBodyAndHeader(method: string, url: string, body: object, header: string): Chainable<any>
 
-      
-
         /**
        * @Description Gera as rotas utilizadas na automação
        */
         routerGenerator(): Chainable<any>
 
-
          /**
        * @Description O comando cy.contractValidation() deve ser utilizado para validações de contrato.
-       */  
+       */
       contractValidation(res:string, service: string, request: string): Chainable<any>
-      
 
       requestWithoutBodyButParam(method: string, endpoint: string, param: string, failOnStatusCode: boolean, timeout: number): Chainable<any>
 
-
-      requestWithBodyAndParamAndHeader(method: string, endpoint: string, body: string, param: string, headers: any, failOnStatusCode: boolean, timeout: number): Chainable<any>
+      requestWithBodyAndParamAndHeader(method: string, endpoint: string, body: string,
+         param: string, headers: any, failOnStatusCode: boolean, timeout: number): Chainable<any>
 
       getAllUsers(): Chainable<any>
 
       getUserId(id: number): Chainable<any>
 
+      waitAuth(): Chainable<any>
 
-
-       /*-----------------------------------------------------------------FRONT-END -----------------------------------------------------*/      
+       /* -----------------------------------------------------------------FRONT-END -----------------------------------------------------*/
 
          /**
        * @Description Nome do arquivo e path onde está o arquivo
@@ -90,15 +84,15 @@ declare namespace Cypress {
       validTime() : Chainable<any>
       validDate() : Chainable<any>
       alertMessage() : Chainable<any>
-      button(): Chainable<any>  
-      inputEnterpriseData(type: string): void 
-      uploadEnterpriseFiles(): Chainable<any> 
-      companyAdress(type: string): void 
-      legalResponsible(type: string): void 
-      uploadLegalResponsiblesFiles(): Chainable<any> 
-      successMessage(): Chainable<any> 
-      submitForm(): Chainable<any> 
-      errorMessage(): Chainable<any> 
+      button(): Chainable<any>
+      inputEnterpriseData(type: string): void
+      uploadEnterpriseFiles(): Chainable<any>
+      companyAdress(type: string): void
+      legalResponsible(type: string): void
+      uploadLegalResponsiblesFiles(): Chainable<any>
+      successMessage(): Chainable<any>
+      submitForm(): Chainable<any>
+      errorMessage(): Chainable<any>
       validFormIntegration(): Chainable<any>
       cancelModal(): Chainable<any>
       removeAllIntegration(): Chainable<any>

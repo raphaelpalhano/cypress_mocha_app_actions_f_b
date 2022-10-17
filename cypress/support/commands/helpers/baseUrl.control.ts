@@ -1,4 +1,4 @@
-import stringControl from '../../utils/string.control';
+import stringControl from './string.control';
 
 Cypress.Commands.add('changeBaseUrl', (server: string) => {
   Cypress.env('ambiente', server);
