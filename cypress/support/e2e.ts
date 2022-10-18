@@ -24,7 +24,7 @@ import 'cypress-real-events/support';
 import './commands/helpers/schema.validation';
 import './commands/helpers/request.service';
 import './commands/services/rest.service';
-import './commands/services/user/researchUsers.service';
+import './commands/services/operations/intermediation-fees.service';
 
 // front
 import './commands/screens/enterprise';
