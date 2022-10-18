@@ -10,8 +10,8 @@ services:
     # - CYPRESS_baseUrl=http://localhost:88
     command: >
         bash -c "npm run cy:clear && npm run cy:run:developed"
-    network_mode: "host"
+    #network_mode: "host"
     volumes:
       - ./cypress:/cy/cypress
       - ./cypress.config.js:/cy/cypress.config.js
-      - ./cypress/videos/:/cy/cypress/videos/
+     # - ./cypress/videos/:/cy/cypress/videos/

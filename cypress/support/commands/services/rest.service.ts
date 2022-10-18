@@ -8,7 +8,8 @@ Cypress.Commands.add('requestWithBody', (method: string, endpoint: string, body:
   }),
 );
 
-Cypress.Commands.add('requestWithBodyAndHeader', (method: string, endpoint: string, body: object, headers: any, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
+Cypress.Commands.add('requestWithBodyAndHeader', (method: string, endpoint: string, body: object, headers:
+  any, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
   cy.request({
     method,
     url: endpoint,
@@ -28,13 +29,14 @@ Cypress.Commands.add('requestWithoutBody', (method: string, endpoint: string, fa
   }),
 );
 
-Cypress.Commands.add('requestWithoutBodyButParam', (method: string, endpoint: string, param: string, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
-  cy.request({
-    method,
-    url: `${endpoint}/${param}`,
-    failOnStatusCode,
-    timeout,
-  }),
+Cypress.Commands.add('requestWithoutBodyButParam',
+  (method: string, endpoint: string, param: string, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
+    cy.request({
+      method,
+      url: `${endpoint}/${param}`,
+      failOnStatusCode,
+      timeout,
+    }),
 );
 
 Cypress.Commands.add(

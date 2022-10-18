@@ -1,6 +1,6 @@
 import * as operations from '../../fixtures/static/operationsValue.json';
 
-describe.skip('Go to manager panel', () => {
+describe.skip('Go to manager panel', { tags: '@frontend' }, () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.intercept('POST', '/proxy/auth/api/v1/auth/token/decode').as('auth');

@@ -1,7 +1,7 @@
 import * as menuItem from '../../fixtures/static/menuItem.json';
 import * as breakPoint from '../../fixtures/static/breakPoint.json';
 
-describe('Painel de Integraçoes', () => {
+describe('Painel de Integraçoes', { tags: '@frontend' }, () => {
   beforeEach('Acessando o Painel de integraçoes', () => {
     cy.openBrowser();
     cy.intercept('POST', '/proxy/auth/api/v1/auth/token/decode').as('auth');

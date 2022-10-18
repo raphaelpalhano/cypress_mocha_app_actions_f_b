@@ -35,11 +35,10 @@ import './commands/screens/operationsSummary';
 import './commands/screens/integrations';
 
 // service-commom
-import './commands/helpers/baseUrl.control';
 
 // general
 import './commands/helpers/router.control';
-import './commands/helpers/wait.control';
+import { controlEnv } from './commands/helpers/baseUrl.control';
 
 require('cypress-grep')();
 require('cy-verify-downloads').addCustomCommand();
@@ -49,3 +48,5 @@ Cypress.Server.defaults({
   force404: false,
 
 });
+
+controlEnv('MS8API');

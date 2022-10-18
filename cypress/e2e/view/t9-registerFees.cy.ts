@@ -4,7 +4,7 @@ import * as fees from '../../fixtures/static/intermediationFees.json';
 import * as message from '../../fixtures/static/modalMessage.json';
 import * as submitButton from '../../fixtures/static/submitButton.json';
 
-describe('Go intermediation fees', () => {
+describe('Go intermediation fees', { tags: '@frontend' }, () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.intercept('POST', '/proxy/auth/api/v1/auth/token/decode').as('auth');

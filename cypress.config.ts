@@ -65,6 +65,7 @@ module.exports = defineConfig({
 
     grepFilterSpecs: true,
 
-    serverRest: 'https://serverest.dev',
+    MS8API: 'https://8xbha0ib2d.execute-api.us-east-1.amazonaws.com/proxy/operations/docs',
+
   },
 });

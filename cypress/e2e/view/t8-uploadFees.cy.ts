@@ -2,7 +2,7 @@ import * as menuItem from '../../fixtures/static/menuItem.json';
 import * as breakPoint from '../../fixtures/static/breakPoint.json';
 import * as message from '../../fixtures/static/modalMessage.json';
 
-describe('Go upload fees', () => {
+describe('Go upload fees', { tags: '@frontend' }, () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.intercept('POST', '/proxy/auth/api/v1/auth/token/decode').as('auth');

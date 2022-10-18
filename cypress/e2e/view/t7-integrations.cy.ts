@@ -5,7 +5,7 @@ import * as message from '../../fixtures/static/modalMessage.json';
 import * as integrationName from '../../factory/dynamicData';
 import * as submitButton from '../../fixtures/static/submitButton.json';
 
-describe('Go to Integrations', () => {
+describe('Go to Integrations', { tags: '@frontend' }, () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.intercept('POST', '/proxy/auth/api/v1/auth/token/decode').as('auth');
