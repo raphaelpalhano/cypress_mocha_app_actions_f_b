@@ -9,6 +9,8 @@ declare namespace Cypress {
        */
         changeBaseUrl(envName: string): Chainable<any>
 
+        waitAuth(): Chainable<any>
+
         /* -------------------------------------------------------BACK-END --------------------------------------------------------------------*/
 
       /**
@@ -56,7 +58,11 @@ declare namespace Cypress {
 
       getUserId(id: number): Chainable<any>
 
-      waitAuth(): Chainable<any>
+      getAllIntermediationsFees(): Chainable<any>
+
+      getOneIntermedationsFees(id: string): Chainable<any>
+
+      postIntermedationsFees(body: object): Chainable<any>
 
        /* -----------------------------------------------------------------FRONT-END -----------------------------------------------------*/
 

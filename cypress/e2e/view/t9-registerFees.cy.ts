@@ -31,31 +31,31 @@ describe('Go intermediation fees', { tags: '@frontend' }, () => {
 
   it('Register min fee', () => {
     cy.input('fee').clear();
-    cy.input('fee').type(fees.minFees);
+    cy.input('fee').type(fees.ui.minFees);
     cy.get('form > button').should('be.enabled').click();
     cy.modal(message.success);
     cy.dataId('alert-modal-confirm-btn').click();
-    cy.input('fee').should('have.value', `${fees.minFees}%`);
+    cy.input('fee').should('have.value', `${fees.ui.minFees}%`);
   });
 
   it('Register max fee', () => {
     cy.input('fee').clear();
-    cy.input('fee').type(fees.maxFees);
+    cy.input('fee').type(fees.ui.maxFees);
     cy.get('form > button').should('be.enabled').click();
     cy.modal(message.success);
     cy.dataId('alert-modal-confirm-btn').click();
-    cy.input('fee').should('have.value', `${fees.maxFees}%`);
+    cy.input('fee').should('have.value', `${fees.ui.maxFees}%`);
   });
 
   it('Invalid fee', () => {
     cy.input('fee').clear();
-    cy.input('fee').type(fees.negative);
+    cy.input('fee').type(fees.ui.negative);
     cy.alertMessage();
     cy.get('form > button').should('be.disabled');
   });
 
   it('Null fee', () => {
-    cy.input('fee').type(fees.negative);
+    cy.input('fee').type(fees.ui.negative);
     cy.input('fee').clear();
     cy.alertMessage();
     cy.get('form > button').should('be.disabled');

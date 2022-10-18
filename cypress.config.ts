@@ -65,7 +65,7 @@ module.exports = defineConfig({
 
     grepFilterSpecs: true,
 
-    MS8API: 'https://8xbha0ib2d.execute-api.us-east-1.amazonaws.com/proxy/operations/docs',
+    MS8API: 'https://8xbha0ib2d.execute-api.us-east-1.amazonaws.com/proxy/',
 
   },
 });
