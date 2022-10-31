@@ -24,21 +24,24 @@ import 'cypress-real-events/support';
 import './commands/helpers/schema.validation';
 import './commands/helpers/request.service';
 import './commands/services/rest.service';
-import './commands/services/operations/intermediation-fees.service';
+import './commands/services/operations.service';
+import './commands/services/suppliers.service';
+import './commands/helpers/auth.service';
 
 // front
-import './commands/screens/enterprise';
-import './commands/screens/general';
-import './commands/screens/home';
-import './commands/screens/login';
-import './commands/screens/operationsSummary';
-import './commands/screens/integrations';
+import './commands/view/enterprise';
+import './commands/view/general';
+import './commands/view/home';
+import './commands/view/login';
+import './commands/view/operationsSummary';
+import './commands/view/integrations';
 
 // service-commom
 
 // general
 import './commands/helpers/router.control';
 import { controlEnv } from './commands/helpers/baseUrl.control';
+import './commands/helpers/string.control';
 
 require('cypress-grep')();
 require('cy-verify-downloads').addCustomCommand();
@@ -49,4 +52,4 @@ Cypress.Server.defaults({
 
 });
 
-controlEnv('MS8API');
+controlEnv();

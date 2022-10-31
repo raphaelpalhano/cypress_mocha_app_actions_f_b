@@ -6,26 +6,61 @@ describe('Go login', { tags: '@frontend' }, () => {
     cy.validRoute(Cypress.env('ROUTERS').login);
   });
 
+  it('Login form', () => {
+    cy.input('username').should('be.visible');
+    cy.input('password').should('be.visible');
+    cy.dataId('visibility-icon').should('be.visible');
+    cy.elementType('button').should('be.disabled');
+    cy.elementType('submit').should('be.disabled');
+  });
+
   it('Login in with Manager', () => {
-    cy.login(Cypress.env('USERS').USER_MANAGER);
-    cy.waitAuth();
+    cy.login(Cypress.env('USERS').USER_MANAGER, Cypress.env('USERS').MANAGER_PASS);
     cy.dataId('page-title').should('have.text', breakPoint.managerHome);
   });
 
   it('Login in with Investor', () => {
-    cy.login(Cypress.env('USERS').USER_INVESTOR);
-    cy.waitAuth();
+    cy.login(Cypress.env('USERS').USER_INVESTOR, Cypress.env('USERS').INVESTOR_PASS);
     cy.contains(breakPoint.investorHome);
   });
 
   it('Login in with Provider', () => {
-    cy.login(Cypress.env('USERS').USER_PROVIDER);
-    cy.waitAuth();
+    cy.login(Cypress.env('USERS').USER_PROVIDER, Cypress.env('USERS').PROVIDER_PASS);
     cy.contains(breakPoint.providerHome);
   });
 
-  it('Invalid login', () => {
-    cy.login(Cypress.env('USERS').USER_INVALID);
+  it('Invalid user', () => {
+    cy.login(Cypress.env('USERS').USER_INVALID, Cypress.env('USERS').PROVIDER_PASS);
+    cy.alertMessage();
+  });
+
+  it('Invalid password', () => {
+    cy.login(Cypress.env('USERS').USER_PROVIDER, Cypress.env('USERS').INVALID_PASS);
+    cy.alertMessage();
+  });
+
+  it('Mandatory username', () => {
+    cy.input('username').type(Cypress.env('USERS').USER_PROVIDER);
+    cy.input('password').type(Cypress.env('USERS').PROVIDER_PASS);
+    cy.input('username').clear();
+    cy.elementType('submit').should('be.disabled');
+    cy.alertMessage();
+  });
+
+  it('Mandatory password', () => {
+    cy.input('username').type(Cypress.env('USERS').USER_PROVIDER);
+    cy.input('password').type(Cypress.env('USERS').PROVIDER_PASS);
+    cy.input('password').clear();
+    cy.elementType('submit').should('be.disabled');
+    cy.alertMessage();
+  });
+
+  it('Mandatory credentials', () => {
+    cy.input('username').type(Cypress.env('USERS').USER_PROVIDER);
+    cy.input('password').type(Cypress.env('USERS').PROVIDER_PASS);
+    cy.input('username').clear();
+    cy.input('password').clear();
+    cy.elementType('submit').should('be.disabled');
     cy.alertMessage();
   });
 });

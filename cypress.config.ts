@@ -2,6 +2,8 @@ import { defineConfig } from 'cypress';
 
 import * as dotenv from 'dotenv';
 
+const fs = require('fs');
+
 const { verifyDownloadTasks } = require('cy-verify-downloads');
 
 dotenv.config({
@@ -18,7 +20,7 @@ module.exports = defineConfig({
     reportTitle: 'Report Mocha',
   },
   e2e: {
-    baseUrl: 'https://cf-banco-fidis-master-ui-ms8.digital-nonprod.fcalatam.com.br',
+
     video: true,
     viewportWidth: 1600,
     viewportHeight: 900,
@@ -35,16 +37,37 @@ module.exports = defineConfig({
       require('cypress-failed-log/on')(on);
       require('cypress-mochawesome-reporter/plugin')(on);
       on('task', verifyDownloadTasks);
+      on('task', {
+        readFileMaybe(filename) {
+          if (fs.existsSync(filename)) {
+            return true;
+          }
+
+          return null;
+        },
+      });
     },
   },
   env: {
-    BASESERVER: 'UI-MS8',
+    frontend: 'https://cf-banco-fidis-master-ui-ms8.digital-nonprod.fcalatam.com.br',
+    api: 'https://8xbha0ib2d.execute-api.us-east-1.amazonaws.com/proxy/',
+    cognito: 'https://cognito-idp.us-east-1.amazonaws.com',
+    TOKEN_BAREAR: process.env.TOKEN_BAREAR,
     USERS: {
-      USER_MANAGER: 'gestor',
-      USER_INVESTOR: 'investidor',
-      USER_PROVIDER: 'fornecedor',
-      USER_INVALID: 'automation',
-      PASSWORD: process.env.PASSWORD,
+      USER_BACK_INVESTOR: 'investidor_back_test@mailinator.com',
+      USER_BACK_SUPPLIER: 'fornecedor_back_test@mailinator.com',
+      USER_BACK_MANAGER: 'gestor_back_test@mailinator.com',
+      USER_MANAGER: 'alline.domingos@avenuecode.com',
+      USER_INVESTOR: 'investor.qa@mailinator.com',
+      USER_PROVIDER: 'provider.qa@mailinator.com',
+      USER_INVALID: 'automation@mailinator.com',
+      USER_FIST_ACCESS: 'manager.qa@mailinator.com',
+      OTP_PASS: '#eL9vLkL',
+      MANAGER_PASS: 'Ali257@si',
+      PROVIDER_PASS: 'Teste@123',
+      INVESTOR_PASS: 'Teste@123',
+      PASS_BACK: 'backBack55221@',
+      INVALID_PASS: '123456@S',
     },
 
     ROUTERS: {
@@ -64,8 +87,6 @@ module.exports = defineConfig({
     TAGS: 'not @ignore',
 
     grepFilterSpecs: true,
-
-    MS8API: 'https://8xbha0ib2d.execute-api.us-east-1.amazonaws.com/proxy/',
 
   },
 });

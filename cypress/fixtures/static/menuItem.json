@@ -3,6 +3,7 @@
     "operations": "Operações",
     "manager": "Gestão",
     "entity": "Entidades",
+    "invite": "Convidar",
     "user": "Usuários",
     "fees": "Subir taxas",
     "intermediation": "Insumos e Leilão",
@@ -15,9 +16,9 @@
   "investor": {
     "panel": "Painel Inicial",
     "manager": "Gestão",
-    "fees": "Cadastrar taxas e limites",
     "operations": "Resumo das Operações",
-    "intermediation": "Insumos e Leilão"
+    "intermediation": "Insumos e Leilão",
+    "fees_limits": "Cadastrar taxas e limites"
   },
 
   "provider": {

@@ -9,7 +9,7 @@ declare namespace Cypress {
        */
         changeBaseUrl(envName: string): Chainable<any>
 
-        waitAuth(): Chainable<any>
+        convertArrayBinaryToString(bodyBinary: any, encondingType: any): Chainable<any>
 
         /* -------------------------------------------------------BACK-END --------------------------------------------------------------------*/
 
@@ -37,7 +37,9 @@ declare namespace Cypress {
        * @param: (method,url,body,header)
        * @example: cy.requestWithBody('POST', 'admin/user', body.json, 'application/json')
        */
-       requestWithBodyAndHeader(method: string, url: string, body: object, header: string): Chainable<any>
+       requestWithBodyAndHeader(method: string, url: string, body: any, header: any): Chainable<any>
+
+       requestWithFormData(method: string, endpoint: string, filePath: string): Chainable<any>
 
         /**
        * @Description Gera as rotas utilizadas na automação
@@ -45,24 +47,34 @@ declare namespace Cypress {
         routerGenerator(): Chainable<any>
 
          /**
-       * @Description O comando cy.contractValidation() deve ser utilizado para validações de contrato.
+       * @Description O comando cy.contractValidation() deve ser utilizado para validações de schemas.
        */
-      contractValidation(res:string, service: string, request: string): Chainable<any>
+        schemaValidation(filePath, res: any): Chainable<any>
 
       requestWithoutBodyButParam(method: string, endpoint: string, param: string, failOnStatusCode: boolean, timeout: number): Chainable<any>
 
       requestWithBodyAndParamAndHeader(method: string, endpoint: string, body: string,
          param: string, headers: any, failOnStatusCode: boolean, timeout: number): Chainable<any>
 
-      getAllUsers(): Chainable<any>
+      authSystem(userType: string): Chainable<any>
 
-      getUserId(id: number): Chainable<any>
+       /* -----------------------------------------------------------------MICROSSERVICE -----------------------------------------------------*/
 
-      getAllIntermediationsFees(): Chainable<any>
+       getOperations(endpoint: string): Chainable<any>
 
-      getOneIntermedationsFees(id: string): Chainable<any>
+       getOneOperations(endpoint: string, id: number): Chainable<any>
 
-      postIntermedationsFees(body: object): Chainable<any>
+       postOperations(endpoint: string, body: object): Chainable<any>
+
+       deleteOperations(endpoint: string, id: string): Chainable<any>
+
+       patchOperations(endpoint: string, id: string, body: object): Chainable<any>
+
+       updateOperations(endpoint: string, id: string, body: object): Chainable<any>
+
+       uploadInvoices(endpoint: string, filePath: string): Chainable<any>
+
+       getSupplierInfo(endpoint: string, id: string): Chainable<any>
 
        /* -----------------------------------------------------------------FRONT-END -----------------------------------------------------*/
 
@@ -82,7 +94,7 @@ declare namespace Cypress {
       elementType(value: string): Chainable<any>
       href(value: string): Chainable<any>
       role(value: string): Chainable<any>
-      login(username: string) : Chainable<any>
+      login(username: string, password: string) : Chainable<any>
       openBrowser() : Chainable<any>
       validRoute(value: string): Chainable<any>
       clickOutside() : Chainable<any>
@@ -102,6 +114,10 @@ declare namespace Cypress {
       validFormIntegration(): Chainable<any>
       cancelModal(): Chainable<any>
       removeAllIntegration(): Chainable<any>
+      pageFeesLimits() : Chainable<any>
+      pageIntegrations(): Chainable<any>
+      pageInvoiceIntermetation(): Chainable<any>
+      pageRegisterEnterprise(): Chainable<any>
 
     }
 

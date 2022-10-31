@@ -3,10 +3,8 @@ import * as operations from '../../fixtures/static/operationsValue.json';
 describe.skip('Go to manager panel', { tags: '@frontend' }, () => {
   beforeEach(() => {
     cy.openBrowser();
-    cy.intercept('POST', '/proxy/auth/api/v1/auth/token/decode').as('auth');
     cy.validRoute(Cypress.env('ROUTERS').login);
-    cy.login(Cypress.env('USERS').USER_MANAGER);
-    cy.waitAuth();
+    cy.login(Cypress.env('USERS').USER_MANAGER, Cypress.env('USERS').MANAGER_PASS);
   });
 
   it('Summary of operations', () => {
@@ -22,6 +20,6 @@ describe.skip('Go to manager panel', { tags: '@frontend' }, () => {
     cy.contains(operations.approved);
     cy.contains(operations.refused);
     cy.contains(operations.paid);
-    cy.contains('Exportar');
+    cy.dataId('export-button').should('be.visible');
   });
 });

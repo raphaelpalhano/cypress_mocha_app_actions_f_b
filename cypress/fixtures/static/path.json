@@ -1,0 +1,5 @@
+{
+  "feesFile": "cypress/fixtures/upload/fees.xlsx",
+  "wrongFile": "cypress/fixtures/upload/wrong.xlsx",
+  "invoiceFile": "cypress/fixtures/upload/notasTeksid.csv"
+}

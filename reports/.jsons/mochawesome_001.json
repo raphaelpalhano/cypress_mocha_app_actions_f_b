@@ -1,0 +1,185 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 5,
+    "failures": -4,
+    "start": "2022-10-26T14:14:56.463Z",
+    "end": "2022-10-26T14:14:56.578Z",
+    "duration": 115,
+    "testsRegistered": 5,
+    "passPercent": null,
+    "pendingPercent": 100,
+    "other": 4,
+    "hasOther": true,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d7e9e6b6-9ee5-420d-837a-caa2c2e50811",
+      "title": "",
+      "fullFile": "cypress/e2e/view/T1-firstAccess.cy.ts",
+      "file": "cypress/e2e/view/T1-firstAccess.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "63614d0c-5127-44e0-a120-67339668793b",
+          "title": "Go first access",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Page of first access",
+              "fullTitle": "Go first access Page of first access",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "25fd4576-e231-4e3e-900c-e2d4467cde4b",
+              "parentUUID": "63614d0c-5127-44e0-a120-67339668793b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Valid data",
+              "fullTitle": "Go first access Valid data",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "4792d3dc-ffcc-4458-8e16-072395234cf3",
+              "parentUUID": "63614d0c-5127-44e0-a120-67339668793b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Email invalid",
+              "fullTitle": "Go first access Email invalid",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "b8165772-a961-463a-9e1f-f8eeea1f85a3",
+              "parentUUID": "63614d0c-5127-44e0-a120-67339668793b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Password invalid",
+              "fullTitle": "Go first access Password invalid",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "a0572b1d-14c4-473c-8cbc-0fdd375c8919",
+              "parentUUID": "63614d0c-5127-44e0-a120-67339668793b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Different passwords",
+              "fullTitle": "Go first access Different passwords",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "3ea9f4d5-0918-425b-a2d3-a48356199504",
+              "parentUUID": "63614d0c-5127-44e0-a120-67339668793b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [
+            "25fd4576-e231-4e3e-900c-e2d4467cde4b",
+            "4792d3dc-ffcc-4458-8e16-072395234cf3",
+            "b8165772-a961-463a-9e1f-f8eeea1f85a3",
+            "a0572b1d-14c4-473c-8cbc-0fdd375c8919",
+            "3ea9f4d5-0918-425b-a2d3-a48356199504"
+          ],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "embeddedScreenshots": true,
+        "reportDir": "reports/.jsons",
+        "reportPageTitle": "Ms8 Report",
+        "reportTitle": "Report Mocha",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

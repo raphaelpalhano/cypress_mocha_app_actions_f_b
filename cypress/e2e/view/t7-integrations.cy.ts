@@ -1,6 +1,5 @@
 import * as integration from '../../fixtures/static/integrations.json';
 import * as breakPoint from '../../fixtures/static/breakPoint.json';
-import * as menuItem from '../../fixtures/static/menuItem.json';
 import * as message from '../../fixtures/static/modalMessage.json';
 import * as integrationName from '../../factory/dynamicData';
 import * as submitButton from '../../fixtures/static/submitButton.json';
@@ -8,14 +7,9 @@ import * as submitButton from '../../fixtures/static/submitButton.json';
 describe('Go to Integrations', { tags: '@frontend' }, () => {
   beforeEach(() => {
     cy.openBrowser();
-    cy.intercept('POST', '/proxy/auth/api/v1/auth/token/decode').as('auth');
     cy.validRoute(Cypress.env('ROUTERS').login);
-    cy.login(Cypress.env('USERS').USER_MANAGER);
-    cy.waitAuth();
-    cy.menuItem('Configurações').realHover().should('have.text', menuItem.manager.config).click();
-    cy.href(Cypress.env('ROUTERS').integration).should('have.text', menuItem.manager.integration).click();
-    cy.validRoute(Cypress.env('ROUTERS').integration);
-    cy.dataId('page-title').should('have.text', breakPoint.integrationsPanel).realMouseUp();
+    cy.login(Cypress.env('USERS').USER_MANAGER, Cypress.env('USERS').MANAGER_PASS);
+    cy.pageIntegrations();
   });
 
   it('Create new integration type URL', () => {
