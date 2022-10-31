@@ -72,7 +72,3 @@ Cypress.Commands.add('button', () => cy.get('[type="submit"]'));
 Cypress.Commands.add('fileUpload', (name: string, pathFile: string) => {
   cy.get(`label[data-testid="upload-button"] input[name="${name}"]`).selectFile(pathFile, { force: true });
 });
-
-Cypress.Commands.add('waitAuth', () => {
-  cy.wait('@auth', { timeout: 15000 }).get('img[alt="Logo"]');
-});

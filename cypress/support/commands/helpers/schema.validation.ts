@@ -15,13 +15,29 @@
  *
  */
 import Ajv from 'ajv';
+import { createSchema } from 'genson-js';
 
 const ajv = new Ajv({ allErrors: true, verbose: true, strict: false });
 
-Cypress.Commands.add('contractValidation', (res: any, service: string, request: string) => {
-  cy.fixture(`backend/schema/${service}/${request}.json`).then((schema) => {
+const schemaGenerator = (file: string, response: object) => {
+  cy.task('readFileMaybe', `cypress/fixtures/schema/${file}`).then((valid) => {
+    const schemaString = createSchema(response);
+    console.log(schemaString);
+    if (!valid) {
+      cy.log('archive not found, I am creating the file...');
+      cy.writeFile(`cypress/fixtures/schema/${file}`, schemaString);
+    } else {
+      cy.log('The file exist!');
+    }
+  });
+};
+
+Cypress.Commands.add('schemaValidation', (filePath, res: any) => {
+  schemaGenerator(filePath, res);
+
+  cy.fixture(`schema/${filePath}`).then((schema) => {
     const validate = ajv.compile(schema);
-    const valid = validate(res.body);
+    const valid = validate(res);
     if (!valid) {
       let errors = '';
       for (const each in validate.errors) {
@@ -31,6 +47,6 @@ Cypress.Commands.add('contractValidation', (res: any, service: string, request: 
 
       throw new Error(`Contract validation erros, please verify!${errors}`);
     }
-    return 'Schema validado com sucesso.';
+    return 'Schema validated successfully!';
   });
 });

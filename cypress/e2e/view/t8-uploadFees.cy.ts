@@ -1,19 +1,12 @@
-import * as menuItem from '../../fixtures/static/menuItem.json';
-import * as breakPoint from '../../fixtures/static/breakPoint.json';
+import * as path from '../../fixtures/static/path.json';
 import * as message from '../../fixtures/static/modalMessage.json';
 
 describe('Go upload fees', { tags: '@frontend' }, () => {
   beforeEach(() => {
     cy.openBrowser();
-    cy.intercept('POST', '/proxy/auth/api/v1/auth/token/decode').as('auth');
     cy.validRoute(Cypress.env('ROUTERS').login);
-    cy.login(Cypress.env('USERS').USER_INVESTOR);
-    cy.waitAuth();
-
-    cy.menuItem('Gestão').realHover().should('have.text', menuItem.manager.manager).click();
-    cy.href(Cypress.env('ROUTERS').fees).should('have.text', menuItem.manager.fees).click();
-    cy.validRoute(Cypress.env('ROUTERS').fees);
-    cy.dataId('page-title').should('have.text', breakPoint.uploadfees).realMouseUp();
+    cy.login(Cypress.env('USERS').USER_INVESTOR, Cypress.env('USERS').INVESTOR_PASS);
+    cy.pageFeesLimits();
   });
 
   it('Upload fees page', () => {
@@ -26,15 +19,18 @@ describe('Go upload fees', { tags: '@frontend' }, () => {
     cy.verifyDownload('template-taxas-investidores.xlsx', { contains: true });
   });
 
-  it.skip('Correct upload', () => {
-    cy.dataId('upload-button').attachFile('upload/fees.xlsx');
-    cy.role('dialog').should('be.visible');
-    cy.get('h2[id*="headlessui-dialog"]').should('have.text', message.waitUpload);
+  it('Correct upload', () => {
+    cy.elementType('file').selectFile(path.feesFile, { force: true });
+    cy.modal(message.waitUpload);
+    cy.modal(message.success);
+    cy.dataId('alert-modal-confirm-btn').click();
   });
 
-  it.skip('Incorrect upload', () => {
-    cy.dataId('upload-button').selectFile('upload/wrong.xlsx');
-    cy.role('dialog').should('be.visible');
-    cy.get('h2[id*="headlessui-dialog"]').should('have.text', message.feesError);
+  it('Incorrect upload', () => {
+    cy.elementType('file').selectFile(path.wrongFile, { force: true });
+    cy.modal(message.waitUpload);
+
+    cy.modal(message.feesError);
+    cy.dataId('alert-modal-confirm-btn').click();
   });
 });

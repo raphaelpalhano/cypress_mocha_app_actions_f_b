@@ -16,11 +16,10 @@
  */
 
 Cypress.Commands.overwrite('request', (originalFunction, ...options) => {
-  Cypress.env('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOiIxMjMifQ.-7drgq5Jss_KB8BnsBapVig4L6s1ES0-y6z-dg1HOxw');
   if (options.length === 1) {
-    if (Cypress.env('token')) {
+    if (Cypress.env('COGNITO_TOKEN')) {
       options[0].headers = {
-        Authorization: `bearer ${Cypress.env('token')}`,
+        Authorization: `Bearer ${Cypress.env('COGNITO_TOKEN')}`,
       };
     }
   }

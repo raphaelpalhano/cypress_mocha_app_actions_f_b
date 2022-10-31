@@ -4,30 +4,28 @@ describe('Nav to menu', { tags: '@frontend' }, () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);
-    cy.login(Cypress.env('USERS').USER_MANAGER);
-    cy.waitAuth();
+    cy.login(Cypress.env('USERS').USER_INVESTOR, Cypress.env('USERS').INVESTOR_PASS);
   });
 
   it('Open menu with mouseover', () => {
-    cy.menuItem('Operações').realHover().should('have.text', menuItem.manager.operations);
+    cy.menuItem(menuItem.investor.panel).realHover().should('have.text', menuItem.investor.panel);
   });
 
-  it('Management menu', () => {
-    cy.menuItem('Gestão').realHover().should('have.text', menuItem.manager.manager).click();
-    cy.subitem('Entidades').should('have.text', menuItem.manager.entity);
-    cy.subitem('Usuários').should('have.text', menuItem.manager.user);
-  });
-
-  it('Intermediation fees menu', () => {
-    cy.menuItem('Insumos e Leilão').realHover().should('have.text', menuItem.manager.intermediation).click();
-    cy.href(Cypress.env('ROUTERS').intermadiation_fees).should(
+  it('Investor menu', () => {
+    cy.menuItem(menuItem.investor.manager)
+      .realHover()
+      .should('have.text', menuItem.investor.manager)
+      .click();
+    cy.href(Cypress.env('ROUTERS').operations_summary).should(
       'have.text',
-      menuItem.manager.intermediation_fees,
+      menuItem.investor.operations,
     );
   });
 
-  it('Config menu', () => {
-    cy.menuItem('Configurações').realHover().should('have.text', menuItem.manager.config).click();
-    cy.href(Cypress.env('ROUTERS').integration).should('have.text', menuItem.manager.integration);
+  it('Intermediation fees menu', () => {
+    cy.menuItem(menuItem.investor.intermediation)
+      .realHover()
+      .should('have.text', menuItem.investor.intermediation)
+      .click();
   });
 });

@@ -21,6 +21,8 @@
       "sourceType": "module"
     },
     "rules": {
+      "func-names": "off",
+      "prefer-arrow-callback": "off" ,
         "valid-typeof": "off",
         "import/no-unresolved": "off",
         "implicit-arrow-linebreak": "off",
@@ -44,6 +46,7 @@
         "default-param-last": "off",
         "function-paren-newline": "off",
         "object-curly-newline": "off",
+        "prefer-const": "off",
         "max-len": [
           "error",
           {

@@ -1,5 +1,3 @@
-import * as breakPoint from '../../fixtures/static/breakPoint.json';
-import * as menuItem from '../../fixtures/static/menuItem.json';
 import * as fees from '../../fixtures/static/intermediationFees.json';
 import * as message from '../../fixtures/static/modalMessage.json';
 import * as submitButton from '../../fixtures/static/submitButton.json';
@@ -7,32 +5,22 @@ import * as submitButton from '../../fixtures/static/submitButton.json';
 describe('Go intermediation fees', { tags: '@frontend' }, () => {
   beforeEach(() => {
     cy.openBrowser();
-    cy.intercept('POST', '/proxy/auth/api/v1/auth/token/decode').as('auth');
     cy.validRoute(Cypress.env('ROUTERS').login);
-    cy.login(Cypress.env('USERS').USER_MANAGER);
-    cy.waitAuth();
-
-    cy.menuItem('Insumos de Leilão')
-      .realHover()
-      .should('have.text', menuItem.manager.intermediation)
-      .click({ force: true });
-    cy.href(Cypress.env('ROUTERS').intermadiation_fees)
-      .should('have.text', menuItem.manager.intermediation_fees)
-      .click({ force: true });
-    cy.validRoute(Cypress.env('ROUTERS').intermadiation_fees);
-    cy.dataId('page-title').should('have.text', breakPoint.intermediation).realMouseUp();
+    cy.login(Cypress.env('USERS').USER_MANAGER, Cypress.env('USERS').MANAGER_PASS);
+    cy.pageInvoiceIntermetation();
   });
 
   it('Fee form', () => {
+    cy.dataId('select-enterprise').should('be.visible');
     cy.dataId('upload-button').should('be.visible');
     cy.input('fee').should('be.visible');
-    cy.get('form > button').should('have.text', submitButton.intermediation);
+    cy.dataId('update-button').should('have.text', submitButton.intermediation);
   });
 
   it('Register min fee', () => {
     cy.input('fee').clear();
     cy.input('fee').type(fees.ui.minFees);
-    cy.get('form > button').should('be.enabled').click();
+    cy.dataId('update-button').should('be.enabled').click();
     cy.modal(message.success);
     cy.dataId('alert-modal-confirm-btn').click();
     cy.input('fee').should('have.value', `${fees.ui.minFees}%`);
@@ -41,7 +29,7 @@ describe('Go intermediation fees', { tags: '@frontend' }, () => {
   it('Register max fee', () => {
     cy.input('fee').clear();
     cy.input('fee').type(fees.ui.maxFees);
-    cy.get('form > button').should('be.enabled').click();
+    cy.dataId('update-button').should('be.enabled').click();
     cy.modal(message.success);
     cy.dataId('alert-modal-confirm-btn').click();
     cy.input('fee').should('have.value', `${fees.ui.maxFees}%`);
@@ -51,13 +39,13 @@ describe('Go intermediation fees', { tags: '@frontend' }, () => {
     cy.input('fee').clear();
     cy.input('fee').type(fees.ui.negative);
     cy.alertMessage();
-    cy.get('form > button').should('be.disabled');
+    cy.dataId('update-button').should('be.disabled');
   });
 
-  it('Null fee', () => {
+  it('Negative intermediation', () => {
     cy.input('fee').type(fees.ui.negative);
     cy.input('fee').clear();
     cy.alertMessage();
-    cy.get('form > button').should('be.disabled');
+    cy.dataId('update-button').should('be.disabled');
   });
 });

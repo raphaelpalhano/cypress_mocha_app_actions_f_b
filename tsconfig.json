@@ -5,7 +5,7 @@
     "target": "ESNext",
     "noEmit": true,
     "strict": false,
-    "lib": ["es2015", "DOM"],
+    "lib": ["es2020", "DOM"],
     "types": [
       "cypress",
       "cypress-real-events",
@@ -14,7 +14,8 @@
       "node",
       "cypress-xpath",
       "cypress-grep",
-      "@testing-library/cypress"
+      "@testing-library/cypress",
+      "fs-extra"
     ]
   },
   "include": [
