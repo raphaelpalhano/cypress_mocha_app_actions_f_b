@@ -1,5 +1,5 @@
 describe('Given the operator want supplier informations', { tags: '@api' }, function () {
-  beforeEach('Given my authentication with manager', () => {
+  before('Given my authentication with supplier', () => {
     cy.authSystem('supplier');
   });
 

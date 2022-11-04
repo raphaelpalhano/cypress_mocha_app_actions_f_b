@@ -61,14 +61,13 @@ Cypress.Commands.add(
     cy.fixture(filePath, 'binary')
       .then((txtBin) => Cypress.Blob.binaryStringToBlob(txtBin, 'text/csv'))
       .then((blob) => {
-        const url = `https://8xbha0ib2d.execute-api.us-east-1.amazonaws.com/proxy/${endpoint}`;
         const formData = new FormData();
         formData.append('enterpriseId', '53444e18-97e9-4099-a0f8-49c62153d8c6');
         formData.append('file', blob);
 
         cy.request({
           method,
-          url,
+          url: endpoint,
           headers: {
             'Content-Type': 'multipart/form-data',
           },
