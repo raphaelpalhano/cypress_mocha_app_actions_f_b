@@ -51,10 +51,10 @@ declare namespace Cypress {
        */
         schemaValidation(filePath, res: any): Chainable<any>
 
-      requestWithoutBodyButParam(method: string, endpoint: string, param: string, failOnStatusCode: boolean, timeout: number): Chainable<any>
+      requestWithoutBodyButParam(method: string, endpoint: string, param: string,): Chainable<any>
 
       requestWithBodyAndParamAndHeader(method: string, endpoint: string, body: string,
-         param: string, headers: any, failOnStatusCode: boolean, timeout: number): Chainable<any>
+         param: string, headers: any): Chainable<any>
 
       authSystem(userType: string): Chainable<any>
 
@@ -75,6 +75,12 @@ declare namespace Cypress {
        uploadInvoices(endpoint: string, filePath: string): Chainable<any>
 
        getSupplierInfo(endpoint: string, id: string): Chainable<any>
+
+       getListOfEnterprises(endpoint: string): Chainable<any>
+
+       getBffSpecific(endpoint: string, param: string): Chainable<any>
+
+       getBffgeneral(endpoint: string): Chainable<any>
 
        /* -----------------------------------------------------------------FRONT-END -----------------------------------------------------*/
 

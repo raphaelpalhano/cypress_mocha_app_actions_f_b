@@ -1,5 +1,5 @@
 describe('Given the operator want see market status', { tags: '@api' }, function () {
-  beforeEach('Given my authentication with manager', () => {
+  before('Given my authentication with manager', () => {
     cy.authSystem('manager');
   });
 

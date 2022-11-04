@@ -1,4 +1,4 @@
-import {faker} from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 
 const name = `${faker.name.firstName()} ${faker.name.lastName()}`;
 

@@ -1,8 +1,10 @@
 import * as fees from '../../../fixtures/static/intermediationFees.json';
 
 describe('User operation the intermediation fees', { tags: '@api' }, function () {
+  before('Given my authentication with manager', () => {
+    cy.authSystem('manager');
+  });
   beforeEach('create a new feee', function () {
-    cy.authSystem('investor');
     cy.postOperations('intermediation-fees', fees.api.max).then((res) => {
       cy.wrap(res).as('response');
       expect(res.body.fee).equal('99.9999999');

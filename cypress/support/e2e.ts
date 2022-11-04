@@ -27,6 +27,8 @@ import './commands/services/rest.service';
 import './commands/services/operations.service';
 import './commands/services/suppliers.service';
 import './commands/helpers/auth.service';
+import './commands/services/enterprieses.service';
+import './commands/services/bff.service';
 
 // front
 import './commands/view/enterprise';
