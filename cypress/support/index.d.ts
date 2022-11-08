@@ -78,6 +78,8 @@ declare namespace Cypress {
 
        getListOfEnterprises(endpoint: string): Chainable<any>
 
+       postRetreveIdEnterprise(endpoint: string, body: Array<string>): Chainable<any>
+
        getBffSpecific(endpoint: string, param: string): Chainable<any>
 
        getBffgeneral(endpoint: string): Chainable<any>
