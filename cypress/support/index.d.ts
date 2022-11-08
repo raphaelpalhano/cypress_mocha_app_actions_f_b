@@ -82,6 +82,16 @@ declare namespace Cypress {
 
        getBffgeneral(endpoint: string): Chainable<any>
 
+       getIntegrations(endpoint: string): Chainable<any>
+
+       getSpecificIntegration(endpoint: string, id: string): Chainable<any>
+
+       updateSpecificIntegration(endpoint: string, id: string, body: object): Chainable<any>
+
+       postIntegration(endpoint: string, body: object): Chainable<any>
+
+       deleteIntegration(endpoint: string, id: string): Chainable<any>
+
        /* -----------------------------------------------------------------FRONT-END -----------------------------------------------------*/
 
          /**
