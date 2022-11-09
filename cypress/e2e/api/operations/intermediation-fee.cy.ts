@@ -16,7 +16,7 @@ describe('User operation the intermediation fees', { tags: '@api' }, function ()
 
   it('Given I get a list the intermedation fees', function () {
     cy.getOperations('intermediation-fees').then((res) => {
-      expect(res.body.data).length.above(1);
+      expect(res.body.data).length.above(0);
       expect(res.status).to.be.eq(200);
       cy.schemaValidation('operations/getAllIntermediation.json', res.body).then((validation) => {
         expect(validation).to.be.eq('Schema validated successfully!');
