@@ -1,7 +1,9 @@
+import * as enterprises from '../../../fixtures/static/config/enterprise.json';
+
 describe('User operation the intermediation fees', { tags: '@api' }, function () {
   const formobject = {
     key: 'enterpriseId',
-    value: '5e5e9bbb-f0ce-4d9f-b4b4-85361372c90b',
+    value: enterprises.enpterprises[0].id,
   };
   before('Given my authentication with manager', () => {
     cy.authSystem('manager');

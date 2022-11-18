@@ -1,3 +1,6 @@
+import * as operations from '../../../fixtures/static/config/operations.json';
+import * as enterprises from '../../../fixtures/static/config/enterprise.json';
+
 describe('Given the operator want see market status', { tags: '@api' }, function () {
   before('Given my authentication with manager', () => {
     cy.authSystem('supplier');
@@ -12,7 +15,7 @@ describe('Given the operator want see market status', { tags: '@api' }, function
   beforeEach('Given generation of entries for operation', function () {
     const formobject = {
       key: 'enterpriseId',
-      value: '5e5e9bbb-f0ce-4d9f-b4b4-85361372c90b',
+      value: enterprises.enpterprises[0].id,
     };
     cy.uploadInvoices('invoices/upload-file', 'upload/invoices.csv', formobject).then((res) => {
       expect(res.status).to.be.eq(201);
@@ -24,6 +27,7 @@ describe('Given the operator want see market status', { tags: '@api' }, function
     });
 
     cy.postOperations('orders', { document: this.documentSupplier }).then((res) => {
+      cy.wrap(res.body.id).as('operationId');
       expect(res.status).to.be.eq(201);
       cy.schemaValidation('operations/createNewOrder.json', res.body).then((validation) => {
         expect(validation).to.be.eq('Schema validated successfully!');
@@ -33,9 +37,16 @@ describe('Given the operator want see market status', { tags: '@api' }, function
       });
     });
   });
-});
 
-it('When I submit the operation', function () {
+  it('When I have investor paid for operation', function () {
+    cy.postOperations(`orders/${this.operationId}/update-status`, { status: operations.status.APPROVED }).then((res) => {
+      expect(res.status).to.be.eq(204);
+    });
+    cy.postOperations(`orders/${this.operationId}/update-payment`, { status: operations.status.PAID }).then((res) => {
+      expect(res.status).to.be.eq(204);
+    });
+  });
+
   it('When I get a list orders', function () {
     cy.getOperations('orders').then((res) => {
       expect(res.status).to.be.eq(200);
