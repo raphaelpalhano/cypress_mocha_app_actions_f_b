@@ -24,20 +24,18 @@ describe('Given the operator want see market status', { tags: '@api' }, function
     });
 
     cy.postOperations('orders', { document: this.documentSupplier }).then((res) => {
-      cy.wrap(res.body.id).as('operationId');
       expect(res.status).to.be.eq(201);
       cy.schemaValidation('operations/createNewOrder.json', res.body).then((validation) => {
         expect(validation).to.be.eq('Schema validated successfully!');
       });
+      cy.submitOrder('orders', res.body.id, { bankAccountId: this.bankId, orderId: this.operationId }).then((response) => {
+        expect(response.status).to.be.eq(204);
+      });
     });
   });
+});
 
-  it('When I submit the operation', function () {
-    cy.submitOrder('orders', this.operationId, { bankAccountId: this.bankId, orderId: this.operationId }).then((res) => {
-      expect(res.status).to.be.eq(204);
-    });
-  });
-
+it('When I submit the operation', function () {
   it('When I get a list orders', function () {
     cy.getOperations('orders').then((res) => {
       expect(res.status).to.be.eq(200);
