@@ -22,6 +22,10 @@ Cypress.Commands.add('updateOperations', (endpoint: string, id: string, body: ob
   cy.requestWithBody(`PUT`, `operations/api/v1/${endpoint}/${id}`, body);
 });
 
-Cypress.Commands.add('uploadInvoices', (endpoint: string, filePath: string) => {
-  cy.requestWithFormData('POST', `operations/api/v1/${endpoint}`, filePath);
+Cypress.Commands.add('uploadInvoices', (endpoint: string, filePath: string, formObject: object) => {
+  cy.requestFormData('POST', `operations/api/v1/${endpoint}`, filePath, 'file', 'text/csv', formObject);
+});
+
+Cypress.Commands.add('submitOrder', (endpoint: string, orderId: string, body: object) => {
+  cy.requestWithBody(`POST`, `operations/api/v1/${endpoint}/${orderId}/submit`, body);
 });
