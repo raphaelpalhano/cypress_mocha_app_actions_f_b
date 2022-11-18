@@ -60,7 +60,6 @@ describe('User operation the intermediation fees', { tags: '@api' }, function ()
   it('Given I updated one global fee', function () {
     const body = {
       fee: 10,
-
     };
     cy.getOperations('global-intermediation-fees').then((res) => {
       cy.updateOperations('global-intermediation-fees', res.body.id, body).then((resp) => {

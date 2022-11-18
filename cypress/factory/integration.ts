@@ -13,7 +13,6 @@ export default {
               value: 'https://docsign.com',
             },
           ],
-
         };
       case 'url_invalid':
         return {
@@ -25,7 +24,6 @@ export default {
               value: 'https://docsign',
             },
           ],
-
         };
       case 'text_valid':
         return {
@@ -37,7 +35,6 @@ export default {
               value: faker.random.words(),
             },
           ],
-
         };
       case 'text_invalid':
         return {
@@ -49,7 +46,6 @@ export default {
               value: '',
             },
           ],
-
         };
 
       case 'date_valid':
@@ -62,12 +58,10 @@ export default {
               value: faker.date.future,
             },
           ],
-
         };
 
       default:
         return { notfound: 'O type foi encontrado!' };
     }
   },
-
 };

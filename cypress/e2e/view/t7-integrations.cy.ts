@@ -13,9 +13,7 @@ describe('Go to Integrations', { tags: '@frontend' }, () => {
   });
 
   it('Create new integration type URL', () => {
-    cy.href(Cypress.env('ROUTERS').integration_create)
-      .should('have.text', submitButton.integration)
-      .click({ force: true });
+    cy.href(Cypress.env('ROUTERS').integration_create).should('have.text', submitButton.integration).click({ force: true });
     cy.validFormIntegration();
     cy.input('name').type(integrationName.integrationName());
     cy.get('input[name*="key"]').type(integration.url.credential);
@@ -28,9 +26,7 @@ describe('Go to Integrations', { tags: '@frontend' }, () => {
   });
 
   it('Create new integration type text', () => {
-    cy.href(Cypress.env('ROUTERS').integration_create)
-      .should('have.text', submitButton.integration)
-      .click({ force: true });
+    cy.href(Cypress.env('ROUTERS').integration_create).should('have.text', submitButton.integration).click({ force: true });
     cy.validRoute(Cypress.env('ROUTERS').integration_create);
     cy.input('name').type(integrationName.integrationName());
     cy.get('input[name*="key"]').type(integration.text.credential);
@@ -43,9 +39,7 @@ describe('Go to Integrations', { tags: '@frontend' }, () => {
   });
 
   it('Create new integration type pass', () => {
-    cy.href(Cypress.env('ROUTERS').integration_create)
-      .should('have.text', submitButton.integration)
-      .click({ force: true });
+    cy.href(Cypress.env('ROUTERS').integration_create).should('have.text', submitButton.integration).click({ force: true });
     cy.validRoute(Cypress.env('ROUTERS').integration_create);
     cy.input('name').type(integrationName.integrationName());
     cy.get('input[name*="key"]').type(integration.pass.credential);
@@ -58,9 +52,7 @@ describe('Go to Integrations', { tags: '@frontend' }, () => {
   });
 
   it('Create new integration type date', () => {
-    cy.href(Cypress.env('ROUTERS').integration_create)
-      .should('have.text', submitButton.integration)
-      .click({ force: true });
+    cy.href(Cypress.env('ROUTERS').integration_create).should('have.text', submitButton.integration).click({ force: true });
     cy.validRoute(Cypress.env('ROUTERS').integration_create);
     cy.input('name').type(integrationName.integrationName());
     cy.get('input[name*="key"]').type(integration.date.credential);
@@ -73,9 +65,7 @@ describe('Go to Integrations', { tags: '@frontend' }, () => {
   });
 
   it('Url invalid', () => {
-    cy.href(Cypress.env('ROUTERS').integration_create)
-      .should('have.text', submitButton.integration)
-      .click({ force: true });
+    cy.href(Cypress.env('ROUTERS').integration_create).should('have.text', submitButton.integration).click({ force: true });
     cy.validRoute(Cypress.env('ROUTERS').integration_create);
     cy.input('name').type(integrationName.integrationName());
     cy.get('input[name*="key"]').type(integration.url.credential);

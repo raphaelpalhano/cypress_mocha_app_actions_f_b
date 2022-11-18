@@ -12,20 +12,11 @@ describe('Nav to menu', { tags: '@frontend' }, () => {
   });
 
   it('Investor menu', () => {
-    cy.menuItem(menuItem.investor.manager)
-      .realHover()
-      .should('have.text', menuItem.investor.manager)
-      .click();
-    cy.href(Cypress.env('ROUTERS').operations_summary).should(
-      'have.text',
-      menuItem.investor.operations,
-    );
+    cy.menuItem(menuItem.investor.manager).realHover().should('have.text', menuItem.investor.manager).click();
+    cy.href(Cypress.env('ROUTERS').operations_summary).should('have.text', menuItem.investor.operations);
   });
 
   it('Intermediation fees menu', () => {
-    cy.menuItem(menuItem.investor.intermediation)
-      .realHover()
-      .should('have.text', menuItem.investor.intermediation)
-      .click();
+    cy.menuItem(menuItem.investor.intermediation).realHover().should('have.text', menuItem.investor.intermediation).click();
   });
 });

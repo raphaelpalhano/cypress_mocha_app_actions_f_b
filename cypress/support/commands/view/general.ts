@@ -55,7 +55,6 @@ Cypress.Commands.add('alertMessage', () => {
         'A data de fundação não pode ser maior que hoje.',
         'O campo deve ser um e-mail válido.Data da procuração/ata vencida.',
         'Erro ao cadastrar, por favor tente novamente.',
-
       ]);
     });
 });

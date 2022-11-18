@@ -20,7 +20,6 @@ module.exports = defineConfig({
     reportTitle: 'Report Mocha',
   },
   e2e: {
-
     video: true,
     viewportWidth: 1600,
     viewportHeight: 900,
@@ -87,6 +86,5 @@ module.exports = defineConfig({
     TAGS: 'not @ignore',
 
     grepFilterSpecs: true,
-
   },
 });

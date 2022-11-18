@@ -8,19 +8,11 @@ describe('Nav to menu', { tags: '@frontend' }, () => {
   });
 
   it('Open menu with mouseover', () => {
-    cy.menuItem(menuItem.investor.manager)
-      .realHover()
-      .should('have.text', menuItem.investor.manager);
+    cy.menuItem(menuItem.investor.manager).realHover().should('have.text', menuItem.investor.manager);
   });
 
   it('Investor menu', () => {
-    cy.menuItem(menuItem.investor.manager)
-      .realHover()
-      .should('have.text', menuItem.provider.manager)
-      .click();
-    cy.href(Cypress.env('ROUTERS').operations_summary).should(
-      'have.text',
-      menuItem.provider.operations,
-    );
+    cy.menuItem(menuItem.investor.manager).realHover().should('have.text', menuItem.provider.manager).click();
+    cy.href(Cypress.env('ROUTERS').operations_summary).should('have.text', menuItem.provider.operations);
   });
 });

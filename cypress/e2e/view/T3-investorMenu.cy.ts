@@ -8,9 +8,7 @@ describe('Nav to menu', { tags: '@frontend' }, () => {
   });
 
   it('Open menu with mouseover', () => {
-    cy.menuItem(menuItem.manager.operations)
-      .realHover()
-      .should('have.text', menuItem.manager.operations);
+    cy.menuItem(menuItem.manager.operations).realHover().should('have.text', menuItem.manager.operations);
   });
 
   it('Management menu', () => {
@@ -20,21 +18,12 @@ describe('Nav to menu', { tags: '@frontend' }, () => {
   });
 
   it('Intermediation fees menu', () => {
-    cy.menuItem(menuItem.manager.intermediation)
-      .realHover()
-      .should('have.text', menuItem.manager.intermediation)
-      .click();
-    cy.href(Cypress.env('ROUTERS').intermadiation_fees).should(
-      'have.text',
-      menuItem.manager.intermediation_fees,
-    );
+    cy.menuItem(menuItem.manager.intermediation).realHover().should('have.text', menuItem.manager.intermediation).click();
+    cy.href(Cypress.env('ROUTERS').intermadiation_fees).should('have.text', menuItem.manager.intermediation_fees);
   });
 
   it('Config menu', () => {
-    cy.menuItem(menuItem.manager.config)
-      .realHover()
-      .should('have.text', menuItem.manager.config)
-      .click();
+    cy.menuItem(menuItem.manager.config).realHover().should('have.text', menuItem.manager.config).click();
     cy.href(Cypress.env('ROUTERS').integration).should('have.text', menuItem.manager.integration);
   });
 });
