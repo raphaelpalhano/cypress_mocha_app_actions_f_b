@@ -9,7 +9,13 @@ declare namespace Cypress {
        */
         changeBaseUrl(envName: string): Chainable<any>
 
-        convertArrayBinaryToString(bodyBinary: any, encondingType: any): Chainable<any>
+        convertArrayBinaryToString(bodyBinary: any, mimeType: any): Chainable<any>
+
+        decodeJWT(encoded: string): Chainable<any>
+
+        getEntityId(): Chainable<any>
+
+        converterToJson(file: string): Chainable<any>
 
         /* -------------------------------------------------------BACK-END --------------------------------------------------------------------*/
 
@@ -39,7 +45,27 @@ declare namespace Cypress {
        */
        requestWithBodyAndHeader(method: string, url: string, body: any, header: any): Chainable<any>
 
-       requestWithFormData(method: string, endpoint: string, filePath: string): Chainable<any>
+       requestWithoutBodyButParam(method: string, endpoint: string, param: string,): Chainable<any>
+
+      requestWithBodyAndParamAndHeader(method: string, endpoint: string, body: string,
+         param: string, headers: any): Chainable<any>
+
+      authSystem(userType: string): Chainable<any>
+
+       /**
+        *
+        * @param method
+        * @param endpoint
+        * @param filePath
+        * @param typeFile
+        * @param mimeType
+        * @param formObject \{key: enterprise, value: 21312}
+        *
+        * @example cy.requestFormData('POST', `operations/api/v1/${endpoint}`, filePath, 'file', 'text/csv', formObject);`
+        */
+        requestFormData(method: string, endpoint: string, filePath: string, typeFile: string, mimeType: string, formObject: any): Chainable<any>
+
+        requestFormDataWithParam(method: string, endpoint: string, filePath: string, typeFile: string, mimeType: string, formObject: any): Chainable<any>
 
         /**
        * @Description Gera as rotas utilizadas na automação
@@ -50,13 +76,6 @@ declare namespace Cypress {
        * @Description O comando cy.contractValidation() deve ser utilizado para validações de schemas.
        */
         schemaValidation(filePath, res: any): Chainable<any>
-
-      requestWithoutBodyButParam(method: string, endpoint: string, param: string,): Chainable<any>
-
-      requestWithBodyAndParamAndHeader(method: string, endpoint: string, body: string,
-         param: string, headers: any): Chainable<any>
-
-      authSystem(userType: string): Chainable<any>
 
        /* -----------------------------------------------------------------MICROSSERVICE -----------------------------------------------------*/
 
@@ -72,7 +91,7 @@ declare namespace Cypress {
 
        updateOperations(endpoint: string, id: string, body: object): Chainable<any>
 
-       uploadInvoices(endpoint: string, filePath: string): Chainable<any>
+       uploadInvoices(endpoint: string, filePath: string, formObject: object): Chainable<any>
 
        getSupplierInfo(endpoint: string, id: string): Chainable<any>
 
@@ -93,6 +112,10 @@ declare namespace Cypress {
        postIntegration(endpoint: string, body: object): Chainable<any>
 
        deleteIntegration(endpoint: string, id: string): Chainable<any>
+
+       submitOrder(endpoint: string, orderId: string, body: object): Chainable<any>
+
+       uploadFees(endpoint: string, filePath: string): Chainable<any>
 
        /* -----------------------------------------------------------------FRONT-END -----------------------------------------------------*/
 

@@ -47,6 +47,7 @@
         "function-paren-newline": "off",
         "object-curly-newline": "off",
         "prefer-const": "off",
+        "no-plusplus": "off",
         "max-len": [
           "error",
           {

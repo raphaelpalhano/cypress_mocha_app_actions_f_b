@@ -1,4 +1,6 @@
+import { faker } from '@faker-js/faker';
 import * as FormData from 'form-data';
+import { dateNow } from '../helpers/string.control';
 
 Cypress.Commands.add('requestWithBody', (method: string, endpoint: string, body: object, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
   cy.request({
@@ -44,6 +46,7 @@ Cypress.Commands.add('requestWithoutBodyButParam',
 Cypress.Commands.add(
   'requestWithBodyAndParamAndHeader',
   (method: string, endpoint: string, body: string, param: string, headers: object, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
+
     cy.request({
       method,
       url: `${endpoint}/${param}`,
@@ -52,18 +55,38 @@ Cypress.Commands.add(
       failOnStatusCode,
       timeout,
     }),
+
 );
 
-Cypress.Commands.add(
-  'requestWithFormData',
-  (method: string, endpoint: string, filePath: string, failOnStatusCode = false) =>
+// Mudar a primeira coluna do upload de notas (REGEX tamanho do char)
 
-    cy.fixture(filePath, 'binary')
-      .then((txtBin) => Cypress.Blob.binaryStringToBlob(txtBin, 'text/csv'))
+Cypress.Commands.add(
+  'requestFormData',
+  (method: string, endpoint: string, filePath: string, typeFile: string, encondingType: string, formObject = {}, failOnStatusCode = false) => {
+    cy.fixture(filePath, 'binary').then((txtEdit) => {
+      const regex = /[0-9]{2}[-|\\/]{1}[0-12]{2}[-|\\/]{1}[0-9]{4}/;
+      const invoiceEndRegex = /0{5}/;
+      if (txtEdit.match(regex)) {
+        return txtEdit.replace(regex, dateNow(10)).replace(invoiceEndRegex, faker.random.numeric(5));
+      }
+      return txtEdit;
+    })
+      .then((txtBin) => Cypress.Blob.binaryStringToBlob(txtBin, encondingType))
       .then((blob) => {
         const formData = new FormData();
-        formData.append('enterpriseId', '53444e18-97e9-4099-a0f8-49c62153d8c6');
-        formData.append('file', blob);
+        if (formObject.key) {
+          formData.append(formObject.key, formObject.value);
+        }
+        formData.append(typeFile, blob);
+
+        cy.log('RequestFormData', {
+          methodHttp: method,
+          route: endpoint,
+          paht: filePath,
+          type: typeFile,
+          enconding: encondingType,
+          object: formObject,
+        });
 
         cy.request({
           method,
@@ -74,13 +97,12 @@ Cypress.Commands.add(
           body: formData,
           failOnStatusCode,
         });
-        // formRequest(url, formData, function (response) {
-        //   console.log(response);
-        //   expect(response.status).to.eq(201);
-        // });
-      }),
-
-);
+      // formRequest(url, formData, function (response) {
+      //   console.log(response);
+      //   expect(response.status).to.eq(201);
+      // });
+      });
+  });
 
 // function formRequest(url, formData, done) {
 //   const xhr = new XMLHttpRequest();

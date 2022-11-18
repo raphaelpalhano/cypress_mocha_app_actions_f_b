@@ -43,7 +43,7 @@ module.exports = defineConfig({
             return true;
           }
 
-          return null;
+          return false;
         },
       });
     },
