@@ -1,39 +1,67 @@
 import { faker } from '@faker-js/faker';
 
 export default {
-  typesIntegrations(loginType: string) {
-    switch (loginType) {
-      case 'url_valido':
+  typesIntegrations(type: string) {
+    switch (type) {
+      case 'url_valid':
         return {
           name: faker.internet.domainName(),
-          credential: 'URL',
-          type: 'URL',
-          key: 'https://docsign.com',
+          credentials: [
+            {
+              type: 'URL',
+              key: 'uri',
+              value: 'https://docsign.com',
+            },
+          ],
         };
-      case 'url_invalido':
+      case 'url_invalid':
         return {
           name: faker.internet.domainName(),
-          credential: 'URL',
-          type: 'URL',
-          key: 'https://docsign',
+          credentials: [
+            {
+              type: 'UR',
+              key: 'uri',
+              value: 'https://docsign',
+            },
+          ],
         };
-      case 'texto_valido':
+      case 'text_valid':
         return {
           name: faker.internet.domainName(),
-          credential: 'Texto',
-          type: 'Texto',
-          key: 'Registro de documentos',
+          credentials: [
+            {
+              type: 'TEXT',
+              key: 'phrase',
+              value: faker.random.words(),
+            },
+          ],
         };
-      case 'texto_invalido':
+      case 'text_invalid':
         return {
           name: faker.internet.domainName(),
-          credential: 'Texto',
-          type: 'Texto',
-          key: ' ',
+          credentials: [
+            {
+              type: 'TEX',
+              key: 'phrase',
+              value: '',
+            },
+          ],
+        };
+
+      case 'date_valid':
+        return {
+          name: faker.internet.domainName(),
+          credentials: [
+            {
+              type: 'DATE',
+              key: 'datevalid',
+              value: faker.date.future,
+            },
+          ],
         };
 
       default:
-        return { notfound: 'O login não foi encontrado!' };
+        return { notfound: 'O type foi encontrado!' };
     }
   },
 };

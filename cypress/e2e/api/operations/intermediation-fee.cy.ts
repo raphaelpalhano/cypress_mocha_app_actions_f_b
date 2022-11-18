@@ -1,8 +1,10 @@
 import * as fees from '../../../fixtures/static/intermediationFees.json';
 
 describe('User operation the intermediation fees', { tags: '@api' }, function () {
+  before('Given my authentication with manager', () => {
+    cy.authSystem('manager');
+  });
   beforeEach('create a new feee', function () {
-    cy.authSystem('investor');
     cy.postOperations('intermediation-fees', fees.api.max).then((res) => {
       cy.wrap(res).as('response');
       expect(res.body.fee).equal('99.9999999');
@@ -14,7 +16,7 @@ describe('User operation the intermediation fees', { tags: '@api' }, function ()
 
   it('Given I get a list the intermedation fees', function () {
     cy.getOperations('intermediation-fees').then((res) => {
-      expect(res.body.data).length.above(1);
+      expect(res.body.data).length.above(0);
       expect(res.status).to.be.eq(200);
       cy.schemaValidation('operations/getAllIntermediation.json', res.body).then((validation) => {
         expect(validation).to.be.eq('Schema validated successfully!');
@@ -58,7 +60,6 @@ describe('User operation the intermediation fees', { tags: '@api' }, function ()
   it('Given I updated one global fee', function () {
     const body = {
       fee: 10,
-
     };
     cy.getOperations('global-intermediation-fees').then((res) => {
       cy.updateOperations('global-intermediation-fees', res.body.id, body).then((resp) => {

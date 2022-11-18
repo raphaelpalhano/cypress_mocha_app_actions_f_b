@@ -22,7 +22,6 @@ const ajv = new Ajv({ allErrors: true, verbose: true, strict: false });
 const schemaGenerator = (file: string, response: object) => {
   cy.task('readFileMaybe', `cypress/fixtures/schema/${file}`).then((valid) => {
     const schemaString = createSchema(response);
-    console.log(schemaString);
     if (!valid) {
       cy.log('archive not found, I am creating the file...');
       cy.writeFile(`cypress/fixtures/schema/${file}`, schemaString);

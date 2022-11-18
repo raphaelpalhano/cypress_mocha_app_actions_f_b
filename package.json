@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prettier-format": "prettier --config .prettierrc '**/*.js' --write",
+    "prettier-format": "prettier --config .prettierrc '**/*.ts' --write",
     "cy:firefox": "cypress run --browser firefox",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
@@ -13,7 +13,7 @@
     "cy:run:front": "npx cypress run --env grepTags='@frontend'",
     "cy:open:front": "npx cypress open --env grepTags='@frontend'",
     "cy:clear": "node ./cypress/support/utils/clear.js",
-    "lint": "eslint . --ext .js",
+    "lint": "eslint . --ext .ts",
     "commit": "git-cz",
     "prepare": "husky install"
   },
@@ -58,7 +58,7 @@
     "typescript": "^4.7.4"
   },
   "lint-staged": {
-    "*.js": [
+    "*.{ts,js,tsx}": [
       "npm run prettier-format",
       "npm run lint --fix"
     ]

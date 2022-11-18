@@ -1,7 +1,5 @@
 import '@testing-library/cypress/add-commands';
 
-const baseUrl = Cypress.config('baseUrl');
-
 Cypress.Commands.add('modal', (message) => cy.get('[role="dialog"] div h2').should('have.text', message));
 
 Cypress.Commands.add('welcome', () => cy.get('div h2'));
@@ -19,6 +17,7 @@ Cypress.Commands.add('input', (value) => cy.get(`input[name*="${value}"]`));
 Cypress.Commands.add('elementType', (value) => cy.get(`[type=${value}]`));
 
 Cypress.Commands.add('validRoute', (route) => {
+  const baseUrl = Cypress.config('baseUrl');
   cy.url().should('be.equal', `${baseUrl}/${route}`);
 });
 
@@ -56,7 +55,6 @@ Cypress.Commands.add('alertMessage', () => {
         'A data de fundação não pode ser maior que hoje.',
         'O campo deve ser um e-mail válido.Data da procuração/ata vencida.',
         'Erro ao cadastrar, por favor tente novamente.',
-
       ]);
     });
 });

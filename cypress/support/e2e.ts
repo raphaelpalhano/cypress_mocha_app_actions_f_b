@@ -27,6 +27,10 @@ import './commands/services/rest.service';
 import './commands/services/operations.service';
 import './commands/services/suppliers.service';
 import './commands/helpers/auth.service';
+import './commands/services/enterprieses.service';
+import './commands/services/bff.service';
+import './commands/services/integrations.service';
+import './commands/services/investors.service';
 
 // front
 import './commands/view/enterprise';
@@ -35,6 +39,8 @@ import './commands/view/home';
 import './commands/view/login';
 import './commands/view/operationsSummary';
 import './commands/view/integrations';
+import './commands/view/menuInvestor';
+import './commands/view/menuManager';
 
 // service-commom
 
@@ -42,6 +48,7 @@ import './commands/view/integrations';
 import './commands/helpers/router.control';
 import { controlEnv } from './commands/helpers/baseUrl.control';
 import './commands/helpers/string.control';
+import './commands/helpers/file.control';
 
 require('cypress-grep')();
 require('cy-verify-downloads').addCustomCommand();
@@ -49,7 +56,6 @@ require('cy-verify-downloads').addCustomCommand();
 Cypress.Server.defaults({
   delay: 500,
   force404: false,
-
 });
 
 controlEnv();
