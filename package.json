@@ -5,14 +5,11 @@
   "main": "index.js",
   "scripts": {
     "prettier-format": "prettier --config .prettierrc '**/*.ts' --write",
-    "cy:firefox": "cypress run --browser firefox",
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
     "cy:run:api": "npx cypress run --env grepTags='@api'",
     "cy:open:api": "npx cypress open --env grepTags='@api'",
     "cy:run:front": "npx cypress run --env grepTags='@frontend'",
     "cy:open:front": "npx cypress open --env grepTags='@frontend'",
-    "cy:clear": "node ./cypress/support/utils/clear.js",
+    "cy:clear": "node ./cypress/support/commands/helpers/clear.ts",
     "lint": "eslint . --ext .ts",
     "commit": "git-cz",
     "prepare": "husky install"
