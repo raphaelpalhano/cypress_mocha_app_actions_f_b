@@ -1,0 +1,28 @@
+image: 253882794486.dkr.ecr.us-east-1.amazonaws.com/build-tools:864d3610-node-18
+
+include:
+  - project: 'fca/architecture/IaC/cloud-digital/common-ci'
+    file: 'job-commons.yml'
+
+stages:
+  - test
+
+api:
+  stage: test
+  only:
+    - master
+  when: manual
+  script:    
+    - npm ci
+    - npm run cy:clear
+    - npm run cy:run:api
+
+front:
+  stage: test
+  only:
+    - master
+  when: manual
+  script:    
+    - npm ci
+    - npm run cy:clear
+    - npm run cy:run:front
