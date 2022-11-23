@@ -1,11 +1,18 @@
+import * as breakPoint from '../../../fixtures/static/breakPoint.json';
 import '@testing-library/cypress/add-commands';
 
-Cypress.Commands.add('login', (username, password) => {
-  cy.intercept('POST', '/proxy/auth/api/v1/auth/token/decode').as('auth');
+Cypress.Commands.add('openBrowser', () => {
+  cy.visit('/');
+  cy.get('div h2').should('have.text', breakPoint.welcomeMessage);
+});
 
+Cypress.Commands.add('login', (username, password) => {
   cy.input('username').type(username);
   cy.input('password').type(password);
-  cy.button().click();
+  cy.button().click({ force: true });
+});
 
-  cy.wait('@auth', { timeout: 15000 }).get('img[alt="Logo"]');
+Cypress.Commands.add('logout', () => {
+  cy.dataId('logout-button').click({ force: true });
+  cy.get('div h2').should('have.text', breakPoint.welcomeMessage);
 });

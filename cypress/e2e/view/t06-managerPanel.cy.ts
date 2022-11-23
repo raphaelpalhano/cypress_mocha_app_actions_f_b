@@ -7,7 +7,7 @@ describe.skip('Go to manager panel', { tags: '@frontend' }, () => {
     cy.login(Cypress.env('USERS').USER_MANAGER, Cypress.env('USERS').MANAGER_PASS);
   });
 
-  it('Summary of operations', () => {
+  it.skip('Summary of operations', () => {
     cy.dataId('section-title');
     cy.validTime();
     cy.validDate();

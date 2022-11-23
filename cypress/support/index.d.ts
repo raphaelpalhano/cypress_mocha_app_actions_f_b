@@ -134,6 +134,7 @@ declare namespace Cypress {
     href(value: string): Chainable<any>;
     role(value: string): Chainable<any>;
     login(username: string, password: string): Chainable<any>;
+    logout(): Chainable<any>;
     openBrowser(): Chainable<any>;
     validRoute(value: string): Chainable<any>;
     clickOutside(): Chainable<any>;
@@ -157,5 +158,8 @@ declare namespace Cypress {
     pageIntegrations(): Chainable<any>;
     pageInvoiceIntermetation(): Chainable<any>;
     pageRegisterEnterprise(): Chainable<any>;
+    pageUploadInvoices(enterprise: string, path: string): Chainable<any>;
+    pageOrderApproved(): Chainable<any>;
+    pageOrderPaid(): Chainable<any>;
   }
 }

@@ -1,8 +1,8 @@
 {
   "welcomeMessage": "Olá, boas-vindas!",
   "managerHome": "Painel inicial",
-  "investorHome": "Home Investidor",
-  "providerHome": "Home Fornecedor",
+  "investorHome": "Analisar operações",
+  "supplierHome": "Antecipar notas",
   "navPrincipal": "Página inicial",
   "welcomeFirstAccess": "Boas-vindas!",
   "forgotPassword": "Recuperar senha",
@@ -10,5 +10,7 @@
   "integrationForm": "Cadastrar nova integração",
   "uploadfees": "Cadastro de taxas e limites",
   "intermediation": "Cadastrar notas e rebate ",
-  "fillRegistry": "Preencher cadastro"
+  "fillRegistry": "Preencher cadastro",
+  "boardTitle": "Checkout da antecipação",
+  "noOrderFound": "Não existem operações disponíveis para análise no momento.Dica: revise as taxas e os limites cadastrados para aumentar suas chances de obter novas solicitações.Ir para taxasIr para limites"
 }

@@ -21,43 +21,43 @@ describe('Go login', { tags: '@frontend' }, () => {
 
   it('Login in with Investor', () => {
     cy.login(Cypress.env('USERS').USER_INVESTOR, Cypress.env('USERS').INVESTOR_PASS);
-    cy.contains(breakPoint.investorHome);
+    cy.dataId('page-title').should('have.text', breakPoint.investorHome);
   });
 
   it('Login in with Provider', () => {
-    cy.login(Cypress.env('USERS').USER_PROVIDER, Cypress.env('USERS').PROVIDER_PASS);
-    cy.contains(breakPoint.providerHome);
+    cy.login(Cypress.env('USERS').USER_SUPPLIER, Cypress.env('USERS').SUPPLIER_PASS);
+    cy.dataId('page-title').should('have.text', breakPoint.supplierHome);
   });
 
   it('Invalid user', () => {
-    cy.login(Cypress.env('USERS').USER_INVALID, Cypress.env('USERS').PROVIDER_PASS);
+    cy.login(Cypress.env('USERS').USER_INVALID, Cypress.env('USERS').SUPPLIER_PASS);
     cy.alertMessage();
   });
 
   it('Invalid password', () => {
-    cy.login(Cypress.env('USERS').USER_PROVIDER, Cypress.env('USERS').INVALID_PASS);
+    cy.login(Cypress.env('USERS').USER_SUPPLIER, Cypress.env('USERS').INVALID_PASS);
     cy.alertMessage();
   });
 
   it('Mandatory username', () => {
-    cy.input('username').type(Cypress.env('USERS').USER_PROVIDER);
-    cy.input('password').type(Cypress.env('USERS').PROVIDER_PASS);
+    cy.input('username').type(Cypress.env('USERS').USER_SUPPLIER);
+    cy.input('password').type(Cypress.env('USERS').SUPPLIER_PASS);
     cy.input('username').clear();
     cy.elementType('submit').should('be.disabled');
     cy.alertMessage();
   });
 
   it('Mandatory password', () => {
-    cy.input('username').type(Cypress.env('USERS').USER_PROVIDER);
-    cy.input('password').type(Cypress.env('USERS').PROVIDER_PASS);
+    cy.input('username').type(Cypress.env('USERS').USER_SUPPLIER);
+    cy.input('password').type(Cypress.env('USERS').SUPPLIER_PASS);
     cy.input('password').clear();
     cy.elementType('submit').should('be.disabled');
     cy.alertMessage();
   });
 
   it('Mandatory credentials', () => {
-    cy.input('username').type(Cypress.env('USERS').USER_PROVIDER);
-    cy.input('password').type(Cypress.env('USERS').PROVIDER_PASS);
+    cy.input('username').type(Cypress.env('USERS').USER_SUPPLIER);
+    cy.input('password').type(Cypress.env('USERS').SUPPLIER_PASS);
     cy.input('username').clear();
     cy.input('password').clear();
     cy.elementType('submit').should('be.disabled');

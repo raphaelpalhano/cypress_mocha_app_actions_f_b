@@ -10,28 +10,28 @@ describe('Go first access', { tags: '@frontend' }, () => {
     cy.welcome().should('have.text', breakPoint.welcomeFirstAccess);
   });
 
-  it('Fist access form', () => {
+  it.skip('Fist access form', () => {
     cy.input('password').should('be.visible');
     cy.input('passwordConfirmation').should('be.visible');
     cy.dataId('visibility-icon').click({ multiple: true });
     cy.elementType('submit').should('be.disabled');
   });
 
-  it('Password invalid', () => {
+  it.skip('Password invalid', () => {
     cy.input('password').type(newUser.inv_pass.newpass);
     cy.input('passwordConfirmation').type(newUser.inv_pass.confirmpass);
     cy.alertMessage();
     cy.elementType('submit').should('be.disabled');
   });
 
-  it('Different passwords', () => {
+  it.skip('Different passwords', () => {
     cy.input('password').type(newUser.diff_pass.newpass);
     cy.input('passwordConfirmation').type(newUser.diff_pass.confirmpass);
     cy.alertMessage();
     cy.elementType('submit').should('be.disabled');
   });
 
-  it('Mandatory new password', () => {
+  it.skip('Mandatory new password', () => {
     cy.input('password').type(newUser.valid.newpass);
     cy.input('passwordConfirmation').type(newUser.valid.confirmpass);
     cy.input('password').clear();
@@ -39,7 +39,7 @@ describe('Go first access', { tags: '@frontend' }, () => {
     cy.elementType('submit').should('be.disabled');
   });
 
-  it('Mandatory confirm password', () => {
+  it.skip('Mandatory confirm password', () => {
     cy.input('password').type(newUser.valid.newpass);
     cy.input('passwordConfirmation').type(newUser.valid.confirmpass);
     cy.input('passwordConfirmation').clear();
@@ -47,7 +47,7 @@ describe('Go first access', { tags: '@frontend' }, () => {
     cy.elementType('submit').should('be.disabled');
   });
 
-  it('Mandatory passwords', () => {
+  it.skip('Mandatory passwords', () => {
     cy.input('password').type(newUser.valid.newpass);
     cy.input('passwordConfirmation').type(newUser.valid.confirmpass);
     cy.input('password').clear();

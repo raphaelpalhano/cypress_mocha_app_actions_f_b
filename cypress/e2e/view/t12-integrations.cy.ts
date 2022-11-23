@@ -12,7 +12,7 @@ describe('Go to Integrations', { tags: '@frontend' }, () => {
     cy.pageIntegrations();
   });
 
-  it('Create new integration type URL', () => {
+  it.skip('Create new integration type URL', () => {
     cy.href(Cypress.env('ROUTERS').integration_create).should('have.text', submitButton.integration).click({ force: true });
     cy.validFormIntegration();
     cy.input('name').type(integrationName.integrationName());
@@ -25,7 +25,7 @@ describe('Go to Integrations', { tags: '@frontend' }, () => {
     cy.dataId('page-title').should('have.text', breakPoint.integrationsPanel);
   });
 
-  it('Create new integration type text', () => {
+  it.skip('Create new integration type text', () => {
     cy.href(Cypress.env('ROUTERS').integration_create).should('have.text', submitButton.integration).click({ force: true });
     cy.validRoute(Cypress.env('ROUTERS').integration_create);
     cy.input('name').type(integrationName.integrationName());
@@ -38,7 +38,7 @@ describe('Go to Integrations', { tags: '@frontend' }, () => {
     cy.dataId('page-title').should('have.text', breakPoint.integrationsPanel);
   });
 
-  it('Create new integration type pass', () => {
+  it.skip('Create new integration type pass', () => {
     cy.href(Cypress.env('ROUTERS').integration_create).should('have.text', submitButton.integration).click({ force: true });
     cy.validRoute(Cypress.env('ROUTERS').integration_create);
     cy.input('name').type(integrationName.integrationName());
@@ -51,7 +51,7 @@ describe('Go to Integrations', { tags: '@frontend' }, () => {
     cy.dataId('page-title').should('have.text', breakPoint.integrationsPanel);
   });
 
-  it('Create new integration type date', () => {
+  it.skip('Create new integration type date', () => {
     cy.href(Cypress.env('ROUTERS').integration_create).should('have.text', submitButton.integration).click({ force: true });
     cy.validRoute(Cypress.env('ROUTERS').integration_create);
     cy.input('name').type(integrationName.integrationName());
@@ -64,7 +64,7 @@ describe('Go to Integrations', { tags: '@frontend' }, () => {
     cy.dataId('page-title').should('have.text', breakPoint.integrationsPanel);
   });
 
-  it('Url invalid', () => {
+  it.skip('Url invalid', () => {
     cy.href(Cypress.env('ROUTERS').integration_create).should('have.text', submitButton.integration).click({ force: true });
     cy.validRoute(Cypress.env('ROUTERS').integration_create);
     cy.input('name').type(integrationName.integrationName());

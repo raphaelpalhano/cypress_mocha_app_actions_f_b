@@ -35,7 +35,6 @@ import './commands/services/investors.service';
 // front
 import './commands/view/enterprise';
 import './commands/view/general';
-import './commands/view/home';
 import './commands/view/login';
 import './commands/view/operationsSummary';
 import './commands/view/integrations';

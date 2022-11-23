@@ -23,3 +23,9 @@ Cypress.Commands.add('pageRegisterEnterprise', () => {
   cy.href(Cypress.env('ROUTERS').registry_entity).should('have.text', 'NovaEmpresa').click();
   cy.dataId('page-title').should('have.text', breakPoint.fillRegistry).realMouseUp();
 });
+
+Cypress.Commands.add('pageUploadInvoices', (enterprise, path) => {
+  cy.dataId('select-enterprise').click();
+  cy.contains(enterprise).click();
+  cy.elementType('file').should('be.enabled').selectFile(path, { force: true });
+});
