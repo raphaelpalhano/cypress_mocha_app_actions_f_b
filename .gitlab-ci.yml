@@ -10,6 +10,7 @@ stages:
 api:
   stage: test
   only:
+    - develop
     - master
   when: manual
   script:    
@@ -20,6 +21,7 @@ api:
 front:
   stage: test
   only:
+    - develop
     - master
   when: manual
   script:    
