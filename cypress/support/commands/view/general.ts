@@ -10,14 +10,14 @@ Cypress.Commands.add('menuItem', (menu: string) => {
   cy.xpath(`//li//span[contains(text(), "${menu}")]`);
 });
 
-Cypress.Commands.add('subitem', (submenu: string) => cy.xpath(`//li//button[contains(text(), "${submenu}")]`));
+Cypress.Commands.add('subitem', (submenu: string) => cy.xpath(`//li//a[contains(text(), "${submenu}")]`));
 
 Cypress.Commands.add('input', (value) => cy.get(`input[name*="${value}"]`));
 
 Cypress.Commands.add('elementType', (value) => cy.get(`[type=${value}]`));
 
 Cypress.Commands.add('validRoute', (route) => {
-  const baseUrl = Cypress.config('baseUrl');
+  const baseUrl = Cypress.env('frontend');
   cy.url().should('be.equal', `${baseUrl}/${route}`);
 });
 

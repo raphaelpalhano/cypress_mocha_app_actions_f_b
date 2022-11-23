@@ -1,7 +1,9 @@
 {
   "manager": {
+    "panel": "Painel inicial",
     "operations": "Operações",
     "manager": "Gestão",
+    "term": "Termo de cessão",
     "entity": "Entidades",
     "invite": "Convidar",
     "user": "Usuários",
@@ -14,15 +16,18 @@
   },
 
   "investor": {
-    "panel": "Painel Inicial",
+    "panel": "Painel inicial",
     "manager": "Gestão",
     "operations": "Resumo das Operações",
+    "term": "Termo de cessão",
     "intermediation": "Insumos e Leilão",
     "fees_limits": "Cadastrar taxas e limites"
   },
 
-  "provider": {
+  "supplier": {
+    "panel": "Antecipar notas",
     "manager": "Gestão",
-    "operations": "Resumo das Operações"
+    "operations": "Resumo das Operações",
+    "term": "Termo de cessão"
   }
 }

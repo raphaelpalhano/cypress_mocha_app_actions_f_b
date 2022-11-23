@@ -16,7 +16,7 @@ describe('Go upload fees', { tags: '@frontend' }, () => {
 
   it('Template donwload', () => {
     cy.dataId('download-model-button').should('be.visible').click();
-    cy.verifyDownload('template-taxas-investidores.xlsx', { contains: true });
+    cy.verifyDownload('.xlsx', { contains: true });
   });
 
   it('Correct upload', () => {
@@ -29,7 +29,6 @@ describe('Go upload fees', { tags: '@frontend' }, () => {
   it('Incorrect upload', () => {
     cy.elementType('file').selectFile(path.wrongFile, { force: true });
     cy.modal(message.waitUpload);
-
     cy.modal(message.feesError);
     cy.dataId('alert-modal-confirm-btn').click();
   });

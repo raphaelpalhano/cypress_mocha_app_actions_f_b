@@ -6,7 +6,7 @@ describe('Painel de Integraçoes', { tags: '@frontend' }, () => {
     cy.pageRegisterEnterprise();
   });
 
-  it('Create enterprise', () => {
+  it.skip('Create enterprise', () => {
     cy.inputEnterpriseData('valid');
     cy.uploadEnterpriseFiles();
     cy.companyAdress('valid');
@@ -16,7 +16,7 @@ describe('Painel de Integraçoes', { tags: '@frontend' }, () => {
     cy.successMessage();
   });
 
-  it('Error to create enterprise ', () => {
+  it.skip('Error to create enterprise ', () => {
     cy.inputEnterpriseData('valid');
     cy.uploadEnterpriseFiles();
     cy.companyAdress('valid');
@@ -26,19 +26,19 @@ describe('Painel de Integraçoes', { tags: '@frontend' }, () => {
     cy.errorMessage();
   });
 
-  it('Invalid enterprise data', () => {
+  it.skip('Invalid enterprise data', () => {
     cy.inputEnterpriseData('invalid_enterprise');
     cy.alertMessage();
     cy.elementType('submit').should('be.disabled');
   });
 
-  it('Invalid enterprise address', () => {
+  it.skip('Invalid enterprise address', () => {
     cy.companyAdress('invalid_address');
     cy.alertMessage();
     cy.elementType('submit').should('be.disabled');
   });
 
-  it('Invalid resposible data', () => {
+  it.skip('Invalid resposible data', () => {
     cy.legalResponsible('invalid_resposible');
     cy.alertMessage();
     cy.elementType('submit').should('be.disabled');

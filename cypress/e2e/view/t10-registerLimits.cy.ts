@@ -1,7 +1,7 @@
 import * as limit from '../../fixtures/static/limits.json';
 import * as message from '../../fixtures/static/modalMessage.json';
 
-describe('Go register limits', () => {
+describe('Go register limits', { tags: '@frontend' }, () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);
