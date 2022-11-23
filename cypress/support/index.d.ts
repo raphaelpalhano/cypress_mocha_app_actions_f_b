@@ -44,6 +44,8 @@ declare namespace Cypress {
      */
     requestWithBodyAndHeader(method: string, url: string, body: any, header: any): Chainable<any>;
 
+    requestCognito(method: string, url: string, body: any, header: any): Chainable<any>;
+
     requestWithoutBodyButParam(method: string, endpoint: string, param: string): Chainable<any>;
 
     requestWithBodyAndParamAndHeader(method: string, endpoint: string, body: string, param: string, headers: any): Chainable<any>;

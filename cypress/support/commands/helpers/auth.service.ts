@@ -22,7 +22,7 @@ Cypress.Commands.add('authSystem', function (userType: string) {
   for (const type in typesUsers) {
     if (userType === type) body.AuthParameters.USERNAME = typesUsers[type];
   }
-  cy.requestWithBodyAndHeader('POST', Cypress.env('cognito'), JSON.stringify(body), headers).then(function (token) {
+  cy.requestCognito('POST', Cypress.env('cognito'), JSON.stringify(body), headers).then(function (token) {
     const tokenAcess = JSON.parse(token.body);
     Cypress.env('ID_TOKEN', tokenAcess.AuthenticationResult.IdToken);
     Cypress.env('COGNITO_TOKEN', tokenAcess.AuthenticationResult.AccessToken);
@@ -30,6 +30,5 @@ Cypress.Commands.add('authSystem', function (userType: string) {
 });
 
 Cypress.Commands.add('getEntityId', function () {
-  const tokenn = Cypress.env('ID_TOKEN');
   cy.decodeJWT(Cypress.env('ID_TOKEN')).then((body) => body['custom:entityId']);
 });

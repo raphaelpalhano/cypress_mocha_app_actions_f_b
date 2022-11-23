@@ -14,13 +14,15 @@ module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
     charts: true,
+    html: true,
+    json: true,
     embeddedScreenshots: true,
     reportDir: './reports',
     reportPageTitle: 'Ms8 Report',
     reportTitle: 'Report Mocha',
   },
   e2e: {
-    video: true,
+    video: false,
     viewportWidth: 1600,
     viewportHeight: 900,
     chromeWebSecurity: false,

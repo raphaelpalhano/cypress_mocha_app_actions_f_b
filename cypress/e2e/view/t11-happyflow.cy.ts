@@ -9,7 +9,7 @@ describe('Manager, supplier and investor flow for anticipation', { tags: '@front
     cy.validRoute(Cypress.env('ROUTERS').login);
   });
 
-  it.skip('Upload fees as a manager', () => {
+  it('Upload fees as a manager', () => {
     cy.login(Cypress.env('USERS').USER_MANAGER, Cypress.env('USERS').MANAGER_PASS);
     cy.pageInvoiceIntermetation();
     cy.pageUploadInvoices(enterprise.t1, path.invoiceFile);
@@ -18,7 +18,7 @@ describe('Manager, supplier and investor flow for anticipation', { tags: '@front
     cy.logout();
   });
 
-  it.skip('Anticipate as a supplier', () => {
+  it('Anticipate as a supplier', () => {
     cy.login(Cypress.env('USERS').USER_SUPPLIER, Cypress.env('USERS').SUPPLIER_PASS);
     cy.dataId('page-title').should('have.text', breakPoint.supplierHome);
     cy.dataId('create-order-button').should('be.enabled').click();

@@ -5,7 +5,7 @@ import { dataIncrement } from '../helpers/string.control';
 Cypress.Commands.add('requestWithBody', (method: string, endpoint: string, body: object, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
   cy.request({
     method,
-    url: endpoint,
+    url: `${Cypress.env('api')}${endpoint}`,
     body,
     failOnStatusCode,
     timeout,
@@ -17,7 +17,20 @@ Cypress.Commands.add(
   (method: string, endpoint: string, body: any, headers: any, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
     cy.request({
       method,
-      url: endpoint,
+      url: `${Cypress.env('api')}${endpoint}`,
+      headers,
+      body,
+      failOnStatusCode,
+      timeout,
+    }),
+);
+
+Cypress.Commands.add(
+  'requestCognito',
+  (method: string, endpoint: string, body: any, headers: any, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
+    cy.request({
+      method,
+      url: `${endpoint}`,
       headers,
       body,
       failOnStatusCode,
@@ -28,7 +41,7 @@ Cypress.Commands.add(
 Cypress.Commands.add('requestWithoutBody', (method: string, endpoint: string, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
   cy.request({
     method,
-    url: endpoint,
+    url: `${Cypress.env('api')}${endpoint}`,
     failOnStatusCode,
     timeout,
   }),
@@ -39,7 +52,7 @@ Cypress.Commands.add(
   (method: string, endpoint: string, param: string, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
     cy.request({
       method,
-      url: `${endpoint}/${param}`,
+      url: `${Cypress.env('api')}${endpoint}/${param}`,
       failOnStatusCode,
       timeout,
     }),
@@ -50,7 +63,7 @@ Cypress.Commands.add(
   (method: string, endpoint: string, body: string, param: string, headers: object, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
     cy.request({
       method,
-      url: `${endpoint}/${param}`,
+      url: `${Cypress.env('api')}${endpoint}/${param}`,
       headers,
       body,
       failOnStatusCode,
@@ -82,7 +95,7 @@ Cypress.Commands.add(
 
         cy.log('RequestFormData', {
           methodHttp: method,
-          route: endpoint,
+          route: `${Cypress.env('api')}${endpoint}`,
           paht: filePath,
           type: typeFile,
           enconding: encondingType,
@@ -91,7 +104,7 @@ Cypress.Commands.add(
 
         cy.request({
           method,
-          url: endpoint,
+          url: `${Cypress.env('api')}${endpoint}`,
           headers: {
             'Content-Type': 'multipart/form-data',
           },

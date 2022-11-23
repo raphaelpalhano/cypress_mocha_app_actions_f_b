@@ -53,5 +53,12 @@ reports/assets
 cypress/screenshots
 
 
+#reports
+
+reports/.jsons
+cypress/videos/view
+cypress/videos/api
+
+
 
 
