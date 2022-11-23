@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 import * as FormData from 'form-data';
-import { dateNow } from '../helpers/string.control';
+import { dataIncrement } from '../helpers/string.control';
 
 Cypress.Commands.add('requestWithBody', (method: string, endpoint: string, body: object, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
   cy.request({
@@ -65,10 +65,10 @@ Cypress.Commands.add(
   (method: string, endpoint: string, filePath: string, typeFile: string, encondingType: string, formObject = {}, failOnStatusCode = false) => {
     cy.fixture(filePath, 'binary')
       .then((txtEdit) => {
-        const regex = /[0-9]{2}[-|\\/]{1}[0-12]{2}[-|\\/]{1}[0-9]{4}/;
+        const dataRegex = /[0-9]{2}[-|\\/]{1}[0-12]{2}[-|\\/]{1}[0-9]{4}/;
         const invoiceEndRegex = /0{5}/;
-        if (txtEdit.match(regex)) {
-          return txtEdit.replace(regex, dateNow(10)).replace(invoiceEndRegex, faker.random.numeric(5));
+        if (txtEdit.match(dataRegex)) {
+          return txtEdit.replace(dataRegex, dataIncrement(10)).replace(invoiceEndRegex, faker.random.numeric(5));
         }
         return txtEdit;
       })

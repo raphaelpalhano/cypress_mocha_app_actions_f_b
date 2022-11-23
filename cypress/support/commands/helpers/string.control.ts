@@ -13,9 +13,10 @@ Cypress.Commands.add('decodeJWT', (encoded: string) => {
   return payload;
 });
 
-export const dateNow = (sum: number) => {
+export const dataIncrement = (day: number) => {
   let today = new Date();
-  let dd = String(today.getDate() + sum).padStart(2, '0');
+  today.setDate(today.getDate() + day);
+  let dd = String(today.getDate()).padStart(2, '0');
   let mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
   let yyyy = today.getFullYear();
 

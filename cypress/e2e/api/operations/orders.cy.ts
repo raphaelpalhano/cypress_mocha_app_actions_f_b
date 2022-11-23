@@ -1,5 +1,6 @@
 import * as operations from '../../../fixtures/static/config/operations.json';
 import * as enterprises from '../../../fixtures/static/config/enterprise.json';
+import * as investor from '../../../fixtures/static/config/investors.json';
 
 describe('Given the operator want see market status', { tags: '@api' }, function () {
   before('Given my authentication with manager', () => {
@@ -21,7 +22,7 @@ describe('Given the operator want see market status', { tags: '@api' }, function
       expect(res.status).to.be.eq(201);
     });
 
-    cy.uploadFees('0dc9055a-5480-4577-857e-3e3fefb3318c/upload-fee-file', 'upload/fees.xlsx').then((res) => {
+    cy.uploadFees(`${investor.id}/upload-fee-file`, 'upload/fees.xlsx').then((res) => {
       expect(res.status).to.be.eq(201);
       expect(res.statusText).to.be.eq('Created');
     });
