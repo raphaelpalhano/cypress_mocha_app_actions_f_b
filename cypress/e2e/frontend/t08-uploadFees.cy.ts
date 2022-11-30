@@ -1,7 +1,7 @@
 import * as path from '../../fixtures/static/path.json';
 import * as message from '../../fixtures/static/modalMessage.json';
 
-describe('Go upload fees', { tags: '@frontend' }, () => {
+describe('Go upload fees', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);

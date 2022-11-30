@@ -4,7 +4,7 @@ import * as message from '../../fixtures/static/modalMessage.json';
 import * as integrationName from '../../factory/dynamicData';
 import * as submitButton from '../../fixtures/static/submitButton.json';
 
-describe('Go to Integrations', { tags: '@frontend' }, () => {
+describe('Go to Integrations', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);

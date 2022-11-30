@@ -1,6 +1,6 @@
 import * as bffData from '../../../fixtures/static/bff.json';
 
-describe('Given I research for INSS', { tags: '@api' }, function () {
+describe('Given I research for INSS', function () {
   before('Given my authentication with manager', () => {
     cy.authSystem('manager');
   });

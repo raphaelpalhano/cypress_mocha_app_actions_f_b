@@ -9,6 +9,7 @@ Cypress.Commands.add('requestWithBody', (method: string, endpoint: string, body:
     body,
     failOnStatusCode,
     timeout,
+    log: false,
   }),
 );
 
@@ -22,6 +23,7 @@ Cypress.Commands.add(
       body,
       failOnStatusCode,
       timeout,
+      log: false,
     }),
 );
 
@@ -35,6 +37,7 @@ Cypress.Commands.add(
       body,
       failOnStatusCode,
       timeout,
+      log: false,
     }),
 );
 
@@ -44,6 +47,7 @@ Cypress.Commands.add('requestWithoutBody', (method: string, endpoint: string, fa
     url: `${Cypress.env('api')}${endpoint}`,
     failOnStatusCode,
     timeout,
+    log: false,
   }),
 );
 
@@ -55,6 +59,7 @@ Cypress.Commands.add(
       url: `${Cypress.env('api')}${endpoint}/${param}`,
       failOnStatusCode,
       timeout,
+      log: false,
     }),
 );
 
@@ -68,6 +73,7 @@ Cypress.Commands.add(
       body,
       failOnStatusCode,
       timeout,
+      log: false,
     }),
 );
 
@@ -110,6 +116,7 @@ Cypress.Commands.add(
           },
           body: formData,
           failOnStatusCode,
+          log: false,
         });
         // formRequest(url, formData, function (response) {
         //   console.log(response);

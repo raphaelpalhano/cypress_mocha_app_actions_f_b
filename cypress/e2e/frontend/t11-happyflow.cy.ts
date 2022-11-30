@@ -3,7 +3,7 @@ import * as path from '../../fixtures/static/path.json';
 import * as message from '../../fixtures/static/modalMessage.json';
 import * as breakPoint from '../../fixtures/static/breakPoint.json';
 
-describe('Manager, supplier and investor flow for anticipation', { tags: '@frontend' }, () => {
+describe('Manager, supplier and investor flow for anticipation', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);

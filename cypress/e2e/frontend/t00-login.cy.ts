@@ -1,6 +1,6 @@
 import * as breakPoint from '../../fixtures/static/breakPoint.json';
 
-describe('Go login', { tags: '@frontend' }, () => {
+describe('Go login', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);

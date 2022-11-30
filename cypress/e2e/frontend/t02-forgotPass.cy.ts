@@ -1,7 +1,7 @@
 import * as user from '../../fixtures/static/forgotPass.json';
 import * as breakPoint from '../../fixtures/static/breakPoint.json';
 
-describe('Go forgot password', { tags: '@frontend' }, () => {
+describe('Go forgot password', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);

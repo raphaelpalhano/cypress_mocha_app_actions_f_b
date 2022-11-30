@@ -2,7 +2,7 @@ import * as newUser from '../../fixtures/static/firstAccess.json';
 import * as breakPoint from '../../fixtures/static/breakPoint.json';
 import * as message from '../../fixtures/static/modalMessage.json';
 
-describe('Go first access', { tags: '@frontend' }, () => {
+describe('Go first access', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);

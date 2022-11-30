@@ -1,4 +1,4 @@
-describe('Painel de Integraçoes', { tags: '@frontend' }, () => {
+describe('Painel de Integraçoes', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);

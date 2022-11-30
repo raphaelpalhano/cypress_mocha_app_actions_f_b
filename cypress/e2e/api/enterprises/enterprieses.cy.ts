@@ -1,8 +1,8 @@
-describe('Given the operator want supplier informations', { tags: '@api' }, function () {
+describe('Given the operator want supplier informations', function () {
   before('Given my authentication with supplier', () => {
     cy.authSystem('supplier');
     cy.getListOfEnterprises('enterprises').then((res) => {
-      cy.wrap(res.body.data[0].document).as('enterpriseId');
+      cy.wrap(res.body.data[0].document).as('enterpriseDocument');
     });
   });
 
@@ -18,7 +18,7 @@ describe('Given the operator want supplier informations', { tags: '@api' }, func
 
   it('When I get enterprise id with governmentId', function () {
     // const enterprises = ['16701716000156'];
-    cy.postRetreveIdEnterprise('enterprises/retrieve-id', [this.enterpriseId]).then((res) => {
+    cy.postRetreveIdEnterprise('enterprises/retrieve-id', [this.enterpriseDocument]).then((res) => {
       expect(res.body).length.above(0);
       expect(res.status).to.be.eq(201);
       cy.schemaValidation('enterprises/retrieveIdEnterprises.json', res.body).then((validation) => {

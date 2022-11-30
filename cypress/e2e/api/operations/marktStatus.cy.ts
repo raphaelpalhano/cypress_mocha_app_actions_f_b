@@ -1,4 +1,4 @@
-describe.skip('Given the operator want see market status', { tags: '@api' }, function () {
+describe.skip('Given the operator want see market status', function () {
   before('Given my authentication with manager', () => {
     cy.authSystem('manager');
   });

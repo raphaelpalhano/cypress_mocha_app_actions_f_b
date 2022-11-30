@@ -1,6 +1,6 @@
 import * as enterprises from '../../../fixtures/static/config/enterprise.json';
 
-describe('User operation the intermediation fees', { tags: '@api' }, function () {
+describe('User operation the intermediation fees', function () {
   const formobject = {
     key: 'enterpriseId',
     value: enterprises.enpterprises[0].id,

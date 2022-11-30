@@ -1,6 +1,6 @@
 import * as menuItem from '../../fixtures/static/menuItem.json';
 
-describe('Nav to menu', { tags: '@frontend' }, () => {
+describe('Nav to menu', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);

@@ -1,6 +1,6 @@
 // import * as fees from '../../../fixtures/static/intermediationFees.json';
 
-describe('User operation the intermediation fees', { tags: '@api' }, function () {
+describe('User operation the intermediation fees', function () {
   before('Given my authentication with manager', () => {
     cy.authSystem('manager');
   });

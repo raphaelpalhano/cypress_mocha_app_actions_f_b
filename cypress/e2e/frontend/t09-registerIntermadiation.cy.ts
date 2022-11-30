@@ -2,7 +2,7 @@ import * as fees from '../../fixtures/static/intermediationFees.json';
 import * as message from '../../fixtures/static/modalMessage.json';
 import * as submitButton from '../../fixtures/static/submitButton.json';
 
-describe('Go intermediation fees', { tags: '@frontend' }, () => {
+describe('Go intermediation fees', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);

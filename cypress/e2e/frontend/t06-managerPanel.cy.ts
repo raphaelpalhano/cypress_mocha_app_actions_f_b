@@ -1,6 +1,6 @@
 import * as operations from '../../fixtures/static/operationsValue.json';
 
-describe.skip('Go to manager panel', { tags: '@frontend' }, () => {
+describe.skip('Go to manager panel', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);

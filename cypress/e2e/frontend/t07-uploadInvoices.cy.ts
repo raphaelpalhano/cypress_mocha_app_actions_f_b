@@ -2,7 +2,7 @@ import * as message from '../../fixtures/static/modalMessage.json';
 import * as enterprise from '../../fixtures/static/enterprises.json';
 import * as path from '../../fixtures/static/path.json';
 
-describe('Go register intermediation', { tags: '@frontend' }, () => {
+describe('Go register intermediation', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);

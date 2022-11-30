@@ -1,4 +1,4 @@
-describe('Given I research for Zip Code', { tags: '@api' }, function () {
+describe('Given I research for Zip Code', function () {
   before('Given my authentication with manager', () => {
     cy.authSystem('manager');
   });

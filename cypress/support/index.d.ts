@@ -117,6 +117,10 @@ declare namespace Cypress {
 
     uploadFees(endpoint: string, filePath: string): Chainable<any>;
 
+    getInvestors(endpoint: string): Chainable<any>;
+
+    patchInvestors(endpoint: string, body: object): Chainable<any>;
+
     /* -----------------------------------------------------------------FRONT-END -----------------------------------------------------*/
 
     /**

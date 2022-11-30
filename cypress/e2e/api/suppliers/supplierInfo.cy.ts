@@ -1,6 +1,6 @@
 import * as suppliers from '../../../fixtures/static/config/suppliers.json';
 
-describe('Given the operator want supplier informations', { tags: '@api' }, function () {
+describe('Given the operator want supplier informations', function () {
   before('Given my authentication with supplier', () => {
     cy.authSystem('supplier');
   });
