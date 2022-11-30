@@ -13,7 +13,6 @@
       "cypress-file-upload",
       "node",
       "cypress-xpath",
-      "cypress-grep",
       "@testing-library/cypress",
       "fs-extra"
     ]

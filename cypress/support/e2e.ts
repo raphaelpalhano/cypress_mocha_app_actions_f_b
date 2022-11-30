@@ -45,11 +45,9 @@ import './commands/view/menuManager';
 
 // general
 import './commands/helpers/router.control';
-import { controlEnv } from './commands/helpers/baseUrl.control';
 import './commands/helpers/string.control';
 import './commands/helpers/file.control';
 
-require('cypress-grep')();
 require('cy-verify-downloads').addCustomCommand();
 
 Cypress.Server.defaults({

@@ -34,7 +34,6 @@ module.exports = defineConfig({
     supportFile: 'cypress/support/e2e.ts',
 
     async setupNodeEvents(on, config) {
-      require('cypress-grep/src/plugin')(config);
       require('cypress-failed-log/on')(on);
       require('cypress-mochawesome-reporter/plugin')(on);
       on('task', verifyDownloadTasks);
@@ -52,7 +51,7 @@ module.exports = defineConfig({
   env: {
     frontend: 'https://cf-banco-fidis-master-ui-ms8.digital-nonprod.fcalatam.com.br',
     api: 'https://8xbha0ib2d.execute-api.us-east-1.amazonaws.com/proxy/',
-    cognito: 'https://cognito-idp.us-east-1.amazonaws.com',
+    cognito: 'https://cognito-idp.us-east-1.amazonaws.com/',
     TOKEN_BAREAR: process.env.TOKEN_BAREAR,
     USERS: {
       USER_BACK_INVESTOR: 'investidor_back_test@mailinator.com',
@@ -88,7 +87,5 @@ module.exports = defineConfig({
     },
 
     TAGS: 'not @ignore',
-
-    grepFilterSpecs: true,
   },
 });

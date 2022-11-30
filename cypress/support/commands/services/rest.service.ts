@@ -37,7 +37,7 @@ Cypress.Commands.add(
       body,
       failOnStatusCode,
       timeout,
-      log: false,
+      log: true,
     }),
 );
 
