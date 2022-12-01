@@ -12,14 +12,14 @@ Cypress.Commands.add('pageFeesLimits', () => {
 
 Cypress.Commands.add('pageOrderApproved', () => {
   cy.dataId('order-status-card').should('be.visible');
-  cy.dataId('approve-or-pay-button').should('have.text', action.approved);
-  cy.dataId('refuse-or-cancel-button').should('have.text', action.refused);
-  cy.dataId('approve-or-pay-button').click({ force: true });
+  cy.dataId('approve-or-pay-button').should('be.visible');
+  cy.dataId('refuse-or-cancel-button').should('be.visible');
+  cy.orderAction(action.approved).click({ force: true });
 });
 
 Cypress.Commands.add('pageOrderPaid', () => {
   cy.dataId('order-status-card').should('be.visible');
-  cy.dataId('approve-or-pay-button').should('have.text', action.paid);
-  cy.dataId('refuse-or-cancel-button').should('have.text', action.cancel);
-  cy.dataId('approve-or-pay-button').click({ force: true });
+  cy.dataId('approve-or-pay-button').should('be.visible');
+  cy.dataId('refuse-or-cancel-button').should('be.visible');
+  cy.orderAction(action.paid).click({ force: true });
 });

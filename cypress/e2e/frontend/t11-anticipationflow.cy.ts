@@ -2,17 +2,19 @@ import * as enterprise from '../../fixtures/static/enterprises.json';
 import * as path from '../../fixtures/static/path.json';
 import * as message from '../../fixtures/static/modalMessage.json';
 import * as breakPoint from '../../fixtures/static/breakPoint.json';
+import * as invoiceData from '../../fixtures/static/invoiceData.json';
 
 describe('Manager, supplier and investor flow for anticipation', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);
+    cy.createInvoiceCsv(invoiceData.document);
   });
 
   it('Upload fees as a manager', () => {
     cy.login(Cypress.env('USERS').USER_MANAGER, Cypress.env('USERS').MANAGER_PASS);
     cy.pageInvoiceIntermetation();
-    cy.pageUploadInvoices(enterprise.t1, path.invoiceFile);
+    cy.pageUploadInvoices(enterprise.t1, path.csv);
     cy.modal(message.success);
     cy.dataId('alert-modal-confirm-btn').click({ force: true });
     cy.logout();
@@ -45,7 +47,6 @@ describe('Manager, supplier and investor flow for anticipation', () => {
     cy.dataId('alert-modal-confirm-btn').click();
     cy.modal(message.success);
     cy.dataId('alert-modal-confirm-btn').click({ force: true });
-    cy.dataId('no-order-found-card').should('have.text', breakPoint.noOrderFound);
     cy.logout();
   });
 });
