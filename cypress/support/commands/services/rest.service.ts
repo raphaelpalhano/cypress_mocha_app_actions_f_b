@@ -7,6 +7,7 @@ Cypress.Commands.add('requestWithBody', (method: string, endpoint: string, body:
     method,
     url: `${Cypress.env('api')}${endpoint}`,
     body,
+
     failOnStatusCode,
     timeout,
     log: false,
@@ -15,11 +16,13 @@ Cypress.Commands.add('requestWithBody', (method: string, endpoint: string, body:
 
 Cypress.Commands.add(
   'requestWithBodyAndHeader',
-  (method: string, endpoint: string, body: any, headers: any, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
+  (method: string, endpoint: string, body: any, header: any, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
     cy.request({
       method,
       url: `${Cypress.env('api')}${endpoint}`,
-      headers,
+      headers: {
+        header,
+      },
       body,
       failOnStatusCode,
       timeout,
@@ -29,11 +32,13 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   'requestCognito',
-  (method: string, endpoint: string, body: any, headers: any, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
+  (method: string, endpoint: string, body: any, header: any, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
     cy.request({
       method,
       url: `${endpoint}`,
-      headers,
+      headers: {
+        header,
+      },
       body,
       failOnStatusCode,
       timeout,
@@ -41,15 +46,24 @@ Cypress.Commands.add(
     }),
 );
 
-Cypress.Commands.add('requestWithoutBody', (method: string, endpoint: string, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
-  cy.request({
+Cypress.Commands.add('requestWithoutBody', (method: string, endpoint: string, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) => {
+  cy.log('requestWithoutBody', {
     method,
+
     url: `${Cypress.env('api')}${endpoint}`,
     failOnStatusCode,
     timeout,
     log: false,
-  }),
-);
+  });
+  cy.request({
+    method,
+
+    url: `${Cypress.env('api')}${endpoint}`,
+    failOnStatusCode,
+    timeout,
+    log: false,
+  });
+});
 
 Cypress.Commands.add(
   'requestWithoutBodyButParam',
@@ -57,6 +71,7 @@ Cypress.Commands.add(
     cy.request({
       method,
       url: `${Cypress.env('api')}${endpoint}/${param}`,
+
       failOnStatusCode,
       timeout,
       log: false,
@@ -65,11 +80,13 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   'requestWithBodyAndParamAndHeader',
-  (method: string, endpoint: string, body: string, param: string, headers: object, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
+  (method: string, endpoint: string, body: string, param: string, header: object, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
     cy.request({
       method,
       url: `${Cypress.env('api')}${endpoint}/${param}`,
-      headers,
+      headers: {
+        header,
+      },
       body,
       failOnStatusCode,
       timeout,
@@ -111,6 +128,7 @@ Cypress.Commands.add(
         cy.request({
           method,
           url: `${Cypress.env('api')}${endpoint}`,
+
           headers: {
             'Content-Type': 'multipart/form-data',
           },

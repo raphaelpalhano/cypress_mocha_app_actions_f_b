@@ -38,26 +38,26 @@ describe('Given the operator want see market status', function () {
         expect(res.statusText).to.be.eq('Created');
       });
 
-    cy.authSystem('investor')
-      .getInvestors(`order?enterpriseId=${this.enterpriseID}&document=${this.enterpriseDocument}`)
-      .then((res) => {
-        expect(res.status).to.be.eq(200);
-        cy.patchInvestors(`${res.body.limits[0].investorId}/limits/${res.body.limits[0].id}`, bodyInvestor).then((response) => {
-          console.log(response);
-          expect(response.status).to.be.eq(200);
-        });
-      });
-
-    cy.postOperations('orders', { document: this.documentSupplier }).then((res) => {
-      cy.wrap(res.body.id).as('operationId');
-      expect(res.status).to.be.eq(201);
-      cy.schemaValidation('operations/createNewOrder.json', res.body).then((validation) => {
-        expect(validation).to.be.eq('Schema validated successfully!');
-      });
-      cy.submitOrder('orders', res.body.id, { bankAccountId: this.bankId, orderId: this.operationId }).then((response) => {
-        expect(response.status).to.be.eq(204);
+    cy.getInvestors(`order?enterpriseId=${this.enterpriseID}&document=${this.enterpriseDocument}`).then((res) => {
+      expect(res.status).to.be.eq(200);
+      cy.patchInvestors(`${res.body.limits[0].investorId}/limits/${res.body.limits[0].id}`, bodyInvestor).then((response) => {
+        console.log(response);
+        expect(response.status).to.be.eq(200);
       });
     });
+
+    cy.authSystem('supplier')
+      .postOperations('orders', { document: this.documentSupplier })
+      .then((res) => {
+        cy.wrap(res.body.id).as('operationId');
+        expect(res.status).to.be.eq(201);
+        cy.schemaValidation('operations/createNewOrder.json', res.body).then((validation) => {
+          expect(validation).to.be.eq('Schema validated successfully!');
+        });
+        cy.submitOrder('orders', res.body.id, { bankAccountId: this.bankId, orderId: this.operationId }).then((response) => {
+          expect(response.status).to.be.eq(204);
+        });
+      });
   });
 
   it('When investor paid operation', function () {

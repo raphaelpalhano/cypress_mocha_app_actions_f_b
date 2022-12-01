@@ -53,6 +53,13 @@ module.exports = defineConfig({
     api: 'https://8xbha0ib2d.execute-api.us-east-1.amazonaws.com/proxy/',
     cognito: 'https://cognito-idp.us-east-1.amazonaws.com/',
     TOKEN_BAREAR: process.env.TOKEN_BAREAR,
+
+    AWS_AMPLYF: {
+      COGNITO_CLIENT_APP_ID: process.env.COGNITO_CLIENT_APP_ID,
+      COGNITO_USER_POOL_ID: process.env.COGNITO_USER_POOL_ID,
+      COGNITO_REGION: process.env.COGNITO_REGION,
+    },
+
     USERS: {
       USER_BACK_INVESTOR: 'investidor_back_test@mailinator.com',
       USER_BACK_SUPPLIER: 'fornecedor_back_test@mailinator.com',
