@@ -12,6 +12,8 @@ Cypress.Commands.add('menuItem', (menu: string) => {
 
 Cypress.Commands.add('subitem', (submenu: string) => cy.xpath(`//li//a[contains(text(), "${submenu}")]`));
 
+Cypress.Commands.add('orderAction', (action: string) => cy.xpath(`(//button//div[contains(text(), "${action}")])[1]`));
+
 Cypress.Commands.add('input', (value) => cy.get(`input[name*="${value}"]`));
 
 Cypress.Commands.add('elementType', (value) => cy.get(`[type=${value}]`));
