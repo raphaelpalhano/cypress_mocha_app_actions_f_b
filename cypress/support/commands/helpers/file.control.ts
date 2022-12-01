@@ -1,3 +1,8 @@
+import { faker } from '@faker-js/faker';
+import { dataIncrement } from '../../../support/commands/helpers/string.control';
+import * as path from '../../../fixtures/static/path.json';
+import * as invoiceData from '../../../fixtures/static/invoiceData.json';
+
 Cypress.Commands.add('converterToJson', (file: string) => {
   cy.readFile(`cypress/fixtures/${file}`, 'latin1').then((text) => {
     let lines = text.split('\n');
@@ -15,4 +20,22 @@ Cypress.Commands.add('converterToJson', (file: string) => {
     // console.log(result)
     return result;
   });
+});
+
+Cypress.Commands.add('createInvoiceCsv', (document) => {
+  const header = 'Nota Fiscal;ExternalID;Emissão;Vencimento;Valor;CNPJ;Fornecedor\n';
+  let num1 = faker.finance.routingNumber();
+  let num2 = faker.datatype.bigInt({ min: 1000, max: 2000 });
+  let date = dataIncrement(5);
+  let invoice =
+    `${num1}-${num2};` +
+    `${num1}-${num2}${invoiceData.document};` +
+    `${invoiceData.creatDate};` +
+    `${date};` +
+    `${invoiceData.value};` +
+    `${document};` +
+    `${invoiceData.supplierName}`;
+
+  cy.writeFile(path.csv, header, 'latin1');
+  cy.writeFile(path.csv, invoice, 'latin1', { flag: 'a+' });
 });

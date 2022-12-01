@@ -15,6 +15,7 @@ declare namespace Cypress {
     getEntityId(): Chainable<any>;
 
     converterToJson(file: string): Chainable<any>;
+    createInvoiceCsv(document: string): Chainable<any>;
 
     /* -------------------------------------------------------BACK-END --------------------------------------------------------------------*/
 
@@ -134,6 +135,7 @@ declare namespace Cypress {
     welcome(): Chainable<any>;
     menuItem(value: string): Chainable<any>;
     subitem(value: string): Chainable<any>;
+    orderAction(value: string): Chainable<any>;
     dataId(value: string): Chainable<any>;
     input(value: string): Chainable<any>;
     elementType(value: string): Chainable<any>;
