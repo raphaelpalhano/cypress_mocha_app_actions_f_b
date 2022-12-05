@@ -15,6 +15,10 @@ describe('Given the operator want see market status', function () {
       cy.wrap(res.body.data[0].document).as('enterpriseDocument');
       cy.wrap(res.body.data[0].id).as('enterpriseID');
     });
+
+    cy.getInvestors('').then((res) => {
+      cy.wrap(res.body.data[0].id).as('investorsId');
+    });
   });
 
   beforeEach('Given generation of entries for operation', function () {
@@ -27,9 +31,6 @@ describe('Given the operator want see market status', function () {
       enterpriseId: this.enterpriseID,
       limit: 10000000,
     };
-    cy.uploadInvoices('invoices/upload-file', 'upload/invoices.csv', formobject).then((res) => {
-      expect(res.status).to.be.eq(201);
-    });
 
     cy.authSystem('investor')
       .uploadFees(`${investor.id}/upload-fee-file`, 'upload/fees.xlsx')
@@ -38,10 +39,14 @@ describe('Given the operator want see market status', function () {
         expect(res.statusText).to.be.eq('Created');
       });
 
-    cy.getInvestors(`order?enterpriseId=${this.enterpriseID}&document=${this.enterpriseDocument}`).then((res) => {
-      expect(res.status).to.be.eq(200);
-      cy.patchInvestors(`${res.body.limits[0].investorId}/limits/${res.body.limits[0].id}`, bodyInvestor).then((response) => {
-        console.log(response);
+    cy.uploadInvoices('invoices/upload-file', 'upload/invoicesBack.csv', formobject).then((res) => {
+      expect(res.status).to.be.eq(201);
+    });
+
+    cy.postInvestors(`${this.investorsId}/limits`, { enterpriseId: this.enterpriseID, limit: 10000000 }).then((res) => {
+      expect(res.status).to.be.eq(201);
+      console.log(res.body);
+      cy.patchInvestors(`${res.body.investorId}/limits/${res.body.id}`, bodyInvestor).then((response) => {
         expect(response.status).to.be.eq(200);
       });
     });
@@ -75,19 +80,16 @@ describe('Given the operator want see market status', function () {
     });
   });
 
-  it('When investor cancel operation', function () {
+  it('When investor cancel operation and list all operations', function () {
     cy.postOperations(`orders/${this.operationId}/update-status`, { status: operations.status.APPROVED }).then((res) => {
       expect(res.status).to.be.eq(204);
     });
     cy.postOperations(`orders/${this.operationId}/update-payment`, { status: operations.status.CANCELLED }).then((res) => {
       expect(res.status).to.be.eq(204);
     });
-  });
 
-  it('When I get a list orders', function () {
     cy.getOperations('orders').then((res) => {
       expect(res.status).to.be.eq(200);
-      console.log(res);
       cy.schemaValidation('operations/listOrders.json', res.body).then((validation) => {
         expect(validation).to.be.eq('Schema validated successfully!');
       });

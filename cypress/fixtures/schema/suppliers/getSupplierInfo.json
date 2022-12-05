@@ -14,7 +14,7 @@
       "type": "string"
     },
     "establishment": {
-      "type": "string"
+      "type": "null"
     },
     "cnae": {
       "type": "string"

@@ -11,10 +11,10 @@ describe('User operation the intermediation fees', function () {
     cy.getInvestors(`order?enterpriseId=${this.enterpriseID}&document=${this.enterpriseDocument}`).then((res) => {
       console.log(res);
       expect(res.status).to.be.eq(200);
-      expect(res.body.data[0]).have.property('id');
-      expect(res.body.data[0]).have.property('corporateName');
-      expect(res.body.data[0]).have.property('document');
-      expect(res.body.data[0]).have.property('tradingName');
+      expect(res.body.limits[0]).have.property('id');
+      expect(res.body.limits[0]).have.property('investorId');
+      expect(res.body.limits[0]).have.property('enterpriseId');
+      expect(res.body.limits[0]).have.property('limit');
 
       cy.schemaValidation('investors/getInvestors.json', res.body).then((validation) => {
         expect(validation).to.be.eq('Schema validated successfully!');
@@ -30,11 +30,11 @@ describe('User operation the intermediation fees', function () {
     cy.getInvestors(`order?enterpriseId=${this.enterpriseID}&document=${this.enterpriseDocument}`).then((res) => {
       expect(res.status).to.be.eq(200);
       cy.patchInvestors(`${res.body.limits[0].investorId}/limits/${res.body.limits[0].id}`, body).then((response) => {
+        console.log(response.body);
         expect(response.status).to.be.eq(200);
-        expect(res.body).have.property('id');
-        expect(res.body).have.property('investorId');
-        expect(res.body).have.property('enterpriseId');
-        expect(res.body).have.property('limit');
+        expect(response.body).have.property('investorId');
+        expect(response.body).have.property('enterpriseId');
+        expect(response.body).have.property('limit');
 
         cy.schemaValidation('investors/patchInvestors.json', response.body).then((validation) => {
           expect(validation).to.be.eq('Schema validated successfully!');

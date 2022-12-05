@@ -122,6 +122,8 @@ declare namespace Cypress {
 
     patchInvestors(endpoint: string, body: object): Chainable<any>;
 
+    postInvestors(endpoint: string, body: object): Chainable<any>;
+
     /* -----------------------------------------------------------------FRONT-END -----------------------------------------------------*/
 
     /**

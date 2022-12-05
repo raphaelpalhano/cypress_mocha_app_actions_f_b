@@ -2,21 +2,40 @@ import { faker } from '@faker-js/faker';
 import * as FormData from 'form-data';
 import { dataIncrement } from '../helpers/string.control';
 
-Cypress.Commands.add('requestWithBody', (method: string, endpoint: string, body: object, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
+Cypress.Commands.add('requestWithBody', (method: string, endpoint: string, body: object, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) => {
+  const log = Cypress.log({
+    displayName: 'requestWithBody',
+    message: [`Request for post/path/put/delete`],
+    // @ts-ignore
+    autoEnd: false,
+  });
+
+  log.snapshot('before');
+
   cy.request({
     method,
     url: `${Cypress.env('api')}${endpoint}`,
     body,
-
     failOnStatusCode,
     timeout,
-    log: false,
-  }),
-);
+  });
+
+  log.snapshot('after');
+  log.end();
+});
 
 Cypress.Commands.add(
   'requestWithBodyAndHeader',
-  (method: string, endpoint: string, body: any, header: any, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
+  (method: string, endpoint: string, body: any, header: any, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) => {
+    const log = Cypress.log({
+      displayName: 'requestWithBodyAndHeader',
+      message: [`Request for post/path/put/delete with header`],
+      // @ts-ignore
+      autoEnd: false,
+    });
+
+    log.snapshot('before');
+
     cy.request({
       method,
       url: `${Cypress.env('api')}${endpoint}`,
@@ -27,12 +46,25 @@ Cypress.Commands.add(
       failOnStatusCode,
       timeout,
       log: false,
-    }),
+    });
+
+    log.snapshot('after');
+    log.end();
+  },
 );
 
 Cypress.Commands.add(
   'requestCognito',
-  (method: string, endpoint: string, body: any, header: any, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
+  (method: string, endpoint: string, body: any, header: any, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) => {
+    const log = Cypress.log({
+      displayName: 'requestWithBodyAndHeader',
+      message: [`Request for post/path/put/delete with header`],
+      // @ts-ignore
+      autoEnd: false,
+    });
+
+    log.snapshot('before');
+
     cy.request({
       method,
       url: `${endpoint}`,
@@ -43,18 +75,23 @@ Cypress.Commands.add(
       failOnStatusCode,
       timeout,
       log: true,
-    }),
+    });
+
+    log.snapshot('after');
+    log.end();
+  },
 );
 
 Cypress.Commands.add('requestWithoutBody', (method: string, endpoint: string, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) => {
-  cy.log('requestWithoutBody', {
-    method,
-
-    url: `${Cypress.env('api')}${endpoint}`,
-    failOnStatusCode,
-    timeout,
-    log: false,
+  const log = Cypress.log({
+    displayName: 'requestWithoutBody',
+    message: [`Request for post/path/put/delete with header`],
+    // @ts-ignore
+    autoEnd: false,
   });
+
+  log.snapshot('before');
+
   cy.request({
     method,
 
@@ -63,11 +100,22 @@ Cypress.Commands.add('requestWithoutBody', (method: string, endpoint: string, fa
     timeout,
     log: false,
   });
+
+  log.snapshot('after');
+  log.end();
 });
 
 Cypress.Commands.add(
   'requestWithoutBodyButParam',
-  (method: string, endpoint: string, param: string, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) =>
+  (method: string, endpoint: string, param: string, failOnStatusCode = false, timeout = Cypress.env('global_timeout')) => {
+    const log = Cypress.log({
+      displayName: 'requestWithoutBody',
+      message: [`Request for post/path/put/delete with header`],
+      // @ts-ignore
+      autoEnd: false,
+    });
+
+    log.snapshot('before');
     cy.request({
       method,
       url: `${Cypress.env('api')}${endpoint}/${param}`,
@@ -75,7 +123,10 @@ Cypress.Commands.add(
       failOnStatusCode,
       timeout,
       log: false,
-    }),
+    });
+    log.snapshot('after');
+    log.end();
+  },
 );
 
 Cypress.Commands.add(
@@ -110,6 +161,13 @@ Cypress.Commands.add(
       })
       .then((txtBin) => Cypress.Blob.binaryStringToBlob(txtBin, encondingType))
       .then((blob) => {
+        const log = Cypress.log({
+          displayName: 'requestWithoutBody',
+          message: [`Request for post/path/put/delete with header`],
+          // @ts-ignore
+          autoEnd: false,
+        });
+        log.snapshot('before');
         const formData = new FormData();
         if (formObject.key) {
           formData.append(formObject.key, formObject.value);
@@ -136,6 +194,8 @@ Cypress.Commands.add(
           failOnStatusCode,
           log: false,
         });
+        log.snapshot('after');
+        log.end();
         // formRequest(url, formData, function (response) {
         //   console.log(response);
         //   expect(response.status).to.eq(201);
