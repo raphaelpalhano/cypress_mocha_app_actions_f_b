@@ -10,7 +10,7 @@ describe('User operation the intermediation fees', function () {
   });
 
   it('I want upload invoices in operations service', function () {
-    cy.uploadInvoices('invoices/upload-file', 'upload/invoices.csv', formobject).then((res) => {
+    cy.uploadInvoices('invoices/upload-file', 'upload/invoicesBack.csv', formobject).then((res) => {
       expect(res.status).to.be.eq(201);
       cy.schemaValidation('operations/uploadValidInvoices.json', res.body).then((validation) => {
         expect(validation).to.be.eq('Schema validated successfully!');

@@ -91,11 +91,6 @@ env: {
 
 ~~~
 
-4. Criei um hook com before para chamar a function `cy.changeBaseUrl('UI-MS8');`
-
-OBS: caso você queria modificar a baseUrl, você precisa passar outro valor diferente do `BASESERVER`. Passe o valor que está em env. `cy.changeBaseUrl('serverRest');`
-
-
 
 
 
@@ -104,8 +99,9 @@ OBS: caso você queria modificar a baseUrl, você precisa passar outro valor dif
   * Instalar: `npm i {package_name} -D`.
   * Rodar em modo headless: `npm run cy:run`
   * Rodar em tela gráfica: `npm run cy:open`
-  * Rodar apenas testes com tag developd `npm run cy:open:developed`
-  * Rodar apenas testes com tag developd em headlesss `npm run cy:run:developed`
+  * Rodar apenas testes no modo sandbox com browser`npm run cy:open`
+  * Rodar apenas testes com tag developd em headlesss `npm run cy:run`
+  * Rodar para gerar resultado no dashboard `npx cypress run --record --key db0be51e-9439-4266-b7a9-79e9266d42b9`
   * Limpar os reports: `npm run cy:clean`
 
 # Dependências:

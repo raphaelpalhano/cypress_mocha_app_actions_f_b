@@ -9,3 +9,7 @@ Cypress.Commands.add('getInvestors', (endpoint: string) => {
 Cypress.Commands.add('patchInvestors', (endpoint: string, body: object) => {
   cy.requestWithBody('PATCH', `investors/api/v1/investors/${endpoint}`, body);
 });
+
+Cypress.Commands.add('postInvestors', (endpoint: string, body: object) => {
+  cy.requestWithBody('POST', `investors/api/v1/investors/${endpoint}`, body);
+});
