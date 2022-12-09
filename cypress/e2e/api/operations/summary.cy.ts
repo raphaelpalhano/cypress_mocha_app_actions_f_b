@@ -12,39 +12,36 @@ describe('Given I want to see summary', function () {
       });
     });
     cy.getListOfEnterprises('enterprises').then((res) => {
-      cy.wrap(res.body.data[0].document).as('enterpriseDocument');
-      cy.wrap(res.body.data[0].id).as('enterpriseID');
+      cy.wrap(res.body.data[1].document).as('enterpriseDocument');
+      cy.wrap(res.body.data[1].id).as('enterpriseID');
     });
 
     cy.authSystem('investor')
-      .uploadFees(`${investor.id}/upload-fee-file`, 'upload/fees.xlsx')
+      .getInvestors('')
       .then((res) => {
-        expect(res.status).to.be.eq(201);
-        expect(res.statusText).to.be.eq('Created');
+        cy.wrap(res.body.data[0].id).as('investorsId');
+        cy.uploadFees(`${investor.id}/upload-fee-file`, 'upload/fees.xlsx').then((resp) => {
+          expect(resp.status).to.be.eq(201);
+          expect(resp.statusText).to.be.eq('Created');
+        });
       });
   });
 
   beforeEach(function () {
-    const bodyInvestor = {
-      enterpriseId: this.enterpriseID,
-      limit: 10000000,
-    };
     const formobject = {
       key: 'enterpriseId',
       value: enterprises.enpterprises[0].id,
     };
 
-    cy.uploadInvoices('invoices/upload-file', 'upload/invoicesBack.csv', formobject).then((res) => {
-      console.log(res);
+    cy.postInvestors(`${this.investorsId}/limits`, { enterpriseId: this.enterpriseID, limit: 10000000 }).then((res) => {
       expect(res.status).to.be.eq(201);
     });
 
-    cy.getInvestors(`order?enterpriseId=${this.enterpriseID}&document=${this.enterpriseDocument}`).then((res) => {
-      expect(res.status).to.be.eq(200);
-      cy.patchInvestors(`${res.body.limits[0].investorId}/limits/${res.body.limits[0].id}`, bodyInvestor).then((response) => {
-        expect(response.status).to.be.eq(200);
+    cy.authSystem('manager')
+      .uploadInvoices('invoices/upload-file', 'upload/invoicesBack.csv', formobject)
+      .then((res) => {
+        expect(res.status).to.be.eq(201);
       });
-    });
 
     cy.authSystem('supplier')
       .postOperations('orders', { document: this.documentSupplier })
@@ -57,9 +54,11 @@ describe('Given I want to see summary', function () {
         cy.submitOrder('orders', res.body.id, { bankAccountId: this.bankId, orderId: this.operationId }).then((response) => {
           expect(response.status).to.be.eq(204);
         });
-        cy.postOperations(`orders/${res.body.id}/update-status`, { status: operations.status.APPROVED }).then((resp) => {
-          expect(resp.status).to.be.eq(204);
-        });
+        cy.authSystem('investor')
+          .postOperations(`orders/${res.body.id}/update-status`, { status: operations.status.APPROVED })
+          .then((resp) => {
+            expect(resp.status).to.be.eq(204);
+          });
         cy.postOperations(`orders/${res.body.id}/update-payment`, { status: operations.status.PAID }).then((respn) => {
           expect(respn.status).to.be.eq(204);
         });
