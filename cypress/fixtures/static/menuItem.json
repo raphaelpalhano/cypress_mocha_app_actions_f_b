@@ -3,7 +3,7 @@
     "panel": "Painel inicial",
     "operations": "Operações",
     "manager": "Gestão",
-    "term": "Termo de cessão",
+    "term": "Termos de cessão",
     "entity": "Entidades",
     "invite": "Convidar",
     "user": "Usuários",
@@ -19,7 +19,7 @@
     "panel": "Painel inicial",
     "manager": "Gestão",
     "operations": "Resumo das Operações",
-    "term": "Termo de cessão",
+    "term": "Termos de cessão",
     "intermediation": "Insumos e Leilão",
     "fees_limits": "Cadastrar taxas e limites"
   },
@@ -28,6 +28,6 @@
     "panel": "Antecipar notas",
     "manager": "Gestão",
     "operations": "Resumo das Operações",
-    "term": "Termo de cessão"
+    "term": "Termos de cessão"
   }
 }

@@ -91,7 +91,7 @@ module.exports = defineConfig({
       register: 'register-entity',
       registry_entity: 'register-entity/enterprise',
       fees_and_limits: 'upload-fees-and-register-limits',
-      term: 'order-assignment-terms',
+      term: 'order-signatures',
     },
 
     TAGS: 'not @ignore',
