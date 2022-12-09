@@ -10,7 +10,7 @@ describe('User operation the intermediation fees', function () {
       cy.wrap(res.body.data[0].id).as('investorsId');
       console.log(res);
       expect(res.status).to.be.eq(200);
-      expect(res.body.data[0].id).have.property('id');
+      expect(res.body.data[0]).have.property('id');
       expect(res.body.data[0]).have.property('corporateName');
       expect(res.body.data[0]).have.property('document');
       expect(res.body.data[0]).have.property('tradingName');
