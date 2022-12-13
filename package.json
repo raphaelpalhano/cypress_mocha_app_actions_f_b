@@ -7,6 +7,8 @@
     "prettier-format": "prettier --config .prettierrc '**/*.ts' --write",
     "cy:run": "npx cypress run",
     "cy:open": "npx cypress open",
+    "cy:run:prod": "npx cypress run --env ENV=prod",
+    "cy:open:prod": "npx cypress open --env ENV=prod",
     "cy:clear": "node ./cypress/support/commands/helpers/clear.ts",
     "lint": "eslint . --ext .ts",
     "commit": "git-cz",

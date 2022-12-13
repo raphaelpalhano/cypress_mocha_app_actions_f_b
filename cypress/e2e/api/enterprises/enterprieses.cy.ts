@@ -2,7 +2,7 @@ describe('Given the operator want supplier informations', function () {
   before('Given my authentication with supplier', () => {
     cy.authSystem('supplier');
     cy.getListOfEnterprises('enterprises').then((res) => {
-      cy.wrap(res.body.data[1].document).as('enterpriseDocument');
+      cy.wrap(res.body.data[0].document).as('enterpriseDocument');
     });
   });
 

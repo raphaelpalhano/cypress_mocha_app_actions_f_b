@@ -2,7 +2,7 @@ import * as operations from '../../../fixtures/static/config/operations.json';
 import * as enterprises from '../../../fixtures/static/config/enterprise.json';
 import * as investor from '../../../fixtures/static/config/investors.json';
 
-describe('Given I want to see summary', function () {
+describe('Given I want to see term of assignment', function () {
   before('Given my authentication with manager', function () {
     cy.authSystem('supplier');
     cy.getEntityId().then((entityId) => {
@@ -66,56 +66,22 @@ describe('Given I want to see summary', function () {
   });
 
   it('How Supplier I have summary of the operations', function () {
-    cy.authSystem('supplier')
-      .getOperations('summary')
-      .then((res) => {
-        expect(res.body.enterprises[0]).have.property('AVAILABLE');
-        expect(res.body.enterprises[0]).have.property('APPROVED');
-        expect(res.body.enterprises[0]).have.property('ON_APPROVAL');
-        expect(res.body.enterprises[0]).have.property('NOT_PAID');
-        expect(res.body.enterprises[0]).have.property('PAID');
-        expect(res.body.enterprises[0]).have.property('name');
-        expect(res.body.enterprises[0]).have.property('enterpriseId');
-        cy.schemaValidation('operations/supplierSummary.json', res.body).then((validation) => {
-          expect(validation).to.be.eq('Schema validated successfully!');
-        });
+    cy.getOperations('orders/signatures').then((res) => {
+      expect(res.body[0]).have.property('id');
+      expect(res.body[0]).have.property('hash');
+      expect(res.body[0].hash).is.length(64);
+      expect(res.body[0]).have.property('orderId');
+      expect(res.body[0]).have.property('date');
+      cy.schemaValidation('operations/orderSignatures.json', res.body).then((validation) => {
+        expect(validation).to.be.eq('Schema validated successfully!');
       });
-  });
 
-  it('How Manager I have summary of the operations', function () {
-    cy.authSystem('manager')
-      .getOperations('summary')
-      .then((res) => {
-        expect(res.body.enterprises[0]).have.property('AVAILABLE');
-        expect(res.body.enterprises[0]).have.property('APPROVED');
-        expect(res.body.enterprises[0]).have.property('ON_APPROVAL');
-        expect(res.body.enterprises[0]).have.property('CANCELLED');
-        expect(res.body.enterprises[0]).have.property('NOT_APPROVED');
-        expect(res.body.enterprises[0]).have.property('PAID');
-        expect(res.body.enterprises[0]).have.property('NEGOTIATED');
-        expect(res.body.enterprises[0]).have.property('name');
-        expect(res.body.enterprises[0]).have.property('enterpriseId');
-        cy.schemaValidation('operations/managerSummary.json', res.body).then((validation) => {
+      cy.getOperations(`orders/signatures/${res.body[0].id}/document`).then((response) => {
+        expect(response.status).to.be.eq(200);
+        cy.schemaValidation('operations/orderDocument.json', res.body).then((validation) => {
           expect(validation).to.be.eq('Schema validated successfully!');
         });
       });
-  });
-
-  it('How Investor I have summary of the operations', function () {
-    cy.authSystem('investor')
-      .getOperations('summary')
-      .then((res) => {
-        expect(res.body.enterprises[0]).have.property('AVAILABLE');
-        expect(res.body.enterprises[0]).have.property('APPROVED');
-        expect(res.body.enterprises[0]).have.property('CANCELLED');
-        expect(res.body.enterprises[0]).have.property('ON_APPROVAL');
-        expect(res.body.enterprises[0]).have.property('NOT_APPROVED');
-        expect(res.body.enterprises[0]).have.property('PAID');
-        expect(res.body.enterprises[0]).have.property('name');
-        expect(res.body.enterprises[0]).have.property('enterpriseId');
-        cy.schemaValidation('operations/investorSummary.json', res.body).then((validation) => {
-          expect(validation).to.be.eq('Schema validated successfully!');
-        });
-      });
+    });
   });
 });

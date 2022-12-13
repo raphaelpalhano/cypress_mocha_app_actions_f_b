@@ -31,6 +31,7 @@ import './commands/services/enterprieses.service';
 import './commands/services/bff.service';
 import './commands/services/integrations.service';
 import './commands/services/investors.service';
+import './commands/services/users.service';
 
 // front
 import './commands/view/enterprise';
@@ -47,6 +48,7 @@ import './commands/view/menuManager';
 import './commands/helpers/router.control';
 import './commands/helpers/string.control';
 import './commands/helpers/file.control';
+import { controlEnv } from './commands/helpers/env.control';
 
 require('cy-verify-downloads').addCustomCommand();
 
@@ -54,3 +56,5 @@ Cypress.Server.defaults({
   delay: 500,
   force404: false,
 });
+
+controlEnv();

@@ -13,8 +13,8 @@ describe('Given the operator want see market status', function () {
         });
       });
     cy.getListOfEnterprises('enterprises').then((res) => {
-      cy.wrap(res.body.data[1].document).as('enterpriseDocument');
-      cy.wrap(res.body.data[1].id).as('enterpriseID');
+      cy.wrap(res.body.data[0].document).as('enterpriseDocument');
+      cy.wrap(res.body.data[0].id).as('enterpriseID');
     });
 
     cy.authSystem('investor')

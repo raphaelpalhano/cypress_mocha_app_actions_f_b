@@ -124,6 +124,8 @@ declare namespace Cypress {
 
     postInvestors(endpoint: string, body: object): Chainable<any>;
 
+    getPermissionsUsers(endpoint: string): Chainable<any>;
+
     /* -----------------------------------------------------------------FRONT-END -----------------------------------------------------*/
 
     /**

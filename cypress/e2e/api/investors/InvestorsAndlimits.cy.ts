@@ -1,9 +1,11 @@
+import * as investor from '../../../fixtures/static/config/investors.json';
+
 describe('User operation the intermediation fees', function () {
   before('Given my authentication with manager', () => {
     cy.authSystem('investor');
     cy.getListOfEnterprises('enterprises').then((res) => {
-      cy.wrap(res.body.data[1].document).as('enterpriseDocument');
-      cy.wrap(res.body.data[1].id).as('enterpriseID');
+      cy.wrap(res.body.data[0].document).as('enterpriseDocument');
+      cy.wrap(res.body.data[0].id).as('enterpriseID');
     });
 
     cy.getInvestors('').then((res) => {
@@ -20,6 +22,12 @@ describe('User operation the intermediation fees', function () {
       cy.schemaValidation('investors/getInvestors.json', res.body).then((validation) => {
         expect(validation).to.be.eq('Schema validated successfully!');
       });
+    });
+
+    cy.uploadFees(`${investor.id}/upload-fee-file`, 'upload/fees.xlsx').then((res) => {
+      console.log(res);
+      expect(res.status).to.be.eq(201);
+      expect(res.statusText).to.be.eq('Created');
     });
   });
 
