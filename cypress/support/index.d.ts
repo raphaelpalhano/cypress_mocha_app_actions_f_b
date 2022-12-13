@@ -145,7 +145,8 @@ declare namespace Cypress {
     elementType(value: string): Chainable<any>;
     href(value: string): Chainable<any>;
     role(value: string): Chainable<any>;
-    login(username: string, password: string): Chainable<any>;
+    login(userType: 'supplier' | 'investor' | 'manager'): Chainable<any>;
+    simpleLogin(username: string, password: string): Chainable<any>;
     logout(): Chainable<any>;
     openBrowser(): Chainable<any>;
     validRoute(value: string): Chainable<any>;

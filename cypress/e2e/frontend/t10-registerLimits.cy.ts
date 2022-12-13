@@ -5,7 +5,7 @@ describe('Go register limits', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);
-    cy.login(Cypress.env('USERS').USER_INVESTOR, Cypress.env('USERS').INVESTOR_PASS);
+    cy.login('investor');
     cy.pageFeesLimits();
   });
 

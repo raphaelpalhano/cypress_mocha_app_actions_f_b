@@ -4,7 +4,7 @@ describe('Nav to menu', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);
-    cy.login(Cypress.env('USERS').USER_MANAGER, Cypress.env('USERS').MANAGER_PASS);
+    cy.login('manager');
   });
 
   it('Open menu with mouseover', () => {
