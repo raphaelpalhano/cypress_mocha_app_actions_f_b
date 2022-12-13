@@ -9,16 +9,16 @@ Cypress.Commands.add('openBrowser', () => {
 Cypress.Commands.add('login', (userType: 'supplier' | 'manager' | 'investor') => {
   const typesUsers = {
     supplier: {
-      user: Cypress.env('USERS').USER_BACK_SUPPLIER,
-      password: Cypress.env('USERS').PASS_BACK,
+      user: Cypress.env('USERS').USER_SUPPLIER,
+      password: Cypress.env('USERS').SUPPLIER_PASS,
     },
     manager: {
-      user: Cypress.env('USERS').USER_BACK_MANAGER,
-      password: Cypress.env('USERS').PASS_BACK,
+      user: Cypress.env('USERS').USER_MANAGER,
+      password: Cypress.env('USERS').MANAGER_PASS,
     },
     investor: {
-      user: Cypress.env('USERS').USER_BACK_INVESTOR,
-      password: Cypress.env('USERS').PASS_BACK,
+      user: Cypress.env('USERS').USER_INVESTOR,
+      password: Cypress.env('USERS').INVESTOR_PASS,
     },
   };
 
