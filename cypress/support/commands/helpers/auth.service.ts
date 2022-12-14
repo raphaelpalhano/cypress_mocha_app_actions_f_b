@@ -85,8 +85,8 @@ Cypress.Commands.add('authSystem', (userType: 'supplier' | 'manager' | 'investor
 //     'x-amz-user-agent': 'aws-amplify/5.0.4 js',
 //   };
 //   const body = {
-//     AuthFlow: 'USER_PASSWORD_AUTH',
-//     ClientId: 'o9od3jf3nqmfb0s8k8v3p1hcg',
+//     AuthFlow: '..',
+//     ClientId: '...',
 //     AuthParameters: { USERNAME: '', PASSWORD: Cypress.env('USERS').PASS_BACK },
 //     ClientMetadata: {},
 //   };
