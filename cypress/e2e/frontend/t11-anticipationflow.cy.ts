@@ -12,7 +12,7 @@ describe('Manager, supplier and investor flow for anticipation', () => {
   });
 
   it('Upload fees as a manager', () => {
-    cy.login(Cypress.env('USERS').USER_MANAGER, Cypress.env('USERS').MANAGER_PASS);
+    cy.login('manager');
     cy.pageInvoiceIntermetation();
     cy.pageUploadInvoices(enterprise.t1, path.csv);
     cy.modal(message.success);
@@ -21,7 +21,7 @@ describe('Manager, supplier and investor flow for anticipation', () => {
   });
 
   it('Anticipate as a supplier', () => {
-    cy.login(Cypress.env('USERS').USER_SUPPLIER, Cypress.env('USERS').SUPPLIER_PASS);
+    cy.login('supplier');
     cy.dataId('page-title').should('have.text', breakPoint.supplierHome);
     cy.dataId('create-order-button').should('be.enabled').click();
     cy.dataId('order-card').contains(breakPoint.boardTitle);
@@ -35,7 +35,7 @@ describe('Manager, supplier and investor flow for anticipation', () => {
   });
 
   it('Approve and pay as an investor', () => {
-    cy.login(Cypress.env('USERS').USER_INVESTOR, Cypress.env('USERS').INVESTOR_PASS);
+    cy.login('investor');
     cy.dataId('page-title').should('have.text', breakPoint.investorHome);
     cy.pageOrderApproved();
     cy.modal(message.aproveOrder);

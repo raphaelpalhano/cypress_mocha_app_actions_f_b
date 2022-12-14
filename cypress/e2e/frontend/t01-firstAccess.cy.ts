@@ -6,7 +6,7 @@ describe('Go first access', () => {
   beforeEach(() => {
     cy.openBrowser();
     cy.validRoute(Cypress.env('ROUTERS').login);
-    cy.login(Cypress.env('USERS').USER_FIST_ACCESS, Cypress.env('USERS').OTP_PASS);
+    cy.simpleLogin(Cypress.env('USERS').USER_FIST_ACCESS, Cypress.env('USERS').OTP_PASS);
     cy.welcome().should('have.text', breakPoint.welcomeFirstAccess);
   });
 

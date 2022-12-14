@@ -15,27 +15,27 @@ describe('Go login', () => {
   });
 
   it('Login in with Manager', () => {
-    cy.login(Cypress.env('USERS').USER_MANAGER, Cypress.env('USERS').MANAGER_PASS);
+    cy.login('manager');
     cy.dataId('page-title').should('have.text', breakPoint.managerHome);
   });
 
   it('Login in with Investor', () => {
-    cy.login(Cypress.env('USERS').USER_INVESTOR, Cypress.env('USERS').INVESTOR_PASS);
+    cy.login('investor');
     cy.dataId('page-title').should('have.text', breakPoint.investorHome);
   });
 
   it('Login in with Provider', () => {
-    cy.login(Cypress.env('USERS').USER_SUPPLIER, Cypress.env('USERS').SUPPLIER_PASS);
+    cy.login('supplier');
     cy.dataId('page-title').should('have.text', breakPoint.supplierHome);
   });
 
   it('Invalid user', () => {
-    cy.login(Cypress.env('USERS').USER_INVALID, Cypress.env('USERS').SUPPLIER_PASS);
+    cy.simpleLogin(Cypress.env('USERS').USER_INVALID, Cypress.env('USERS').SUPPLIER_PASS);
     cy.alertMessage();
   });
 
   it('Invalid password', () => {
-    cy.login(Cypress.env('USERS').USER_SUPPLIER, Cypress.env('USERS').INVALID_PASS);
+    cy.simpleLogin(Cypress.env('USERS').USER_SUPPLIER, Cypress.env('USERS').INVALID_PASS);
     cy.alertMessage();
   });
 
